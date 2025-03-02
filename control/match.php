@@ -1,5 +1,5 @@
 <?php
-$titre = 'Accueil'; 
+$title = 'Accueil'; 
 $racine_path = './';
 ?>
 		
