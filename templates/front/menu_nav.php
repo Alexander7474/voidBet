@@ -10,7 +10,7 @@
           <!-- <a class="nav-item nav-link ps-2 pe-2" href="#">Joueurs</a>A voir pour plus tard -->
       </div>  
       <div class="col d-flex justify-content-end">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Connexion</button>
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">Connexion</button>
       </div>   
     </div>
 </div>
