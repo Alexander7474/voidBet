@@ -18,7 +18,6 @@ $tournaments_line = '
 ';
 
 $tournaments_struct = '
-  <div class="mt-2 mb-2 p-2 d-flex flex-column align-items-center second-plan rounded">
     <h3 class="mt-3 mb-2 border-bottom w-100">Mois</h3>    
     <div class="mb-3 p-2 text-white w-100 text-center align-items-center rounded first-plan">
      <div class="row mt-1 mb-1">
@@ -28,7 +27,6 @@ $tournaments_struct = '
       <div class="col-3 d-flex justify-content-start">Participants</div>
      </div>
      '.$tournaments_line.$tournaments_line.$tournaments_line.'
-    </div>
   </div>
 '; // stock les divs des tournaments à afficher
 

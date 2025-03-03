@@ -2,8 +2,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-$title = 'Accueil'; 
-$racine_path = './';
+$title = "Accueil";
+$racine_path = "./";
 
 // les valeurs sont des exemples 
 $team1 ="Spirit";
@@ -20,31 +20,29 @@ $matches_top = '
 
 $matches_line = '
   <div class="row first-plan-h mt-3">
-    <div class="col">'.$match_time.'</div>
-    <div class="col">
+    <div class="col-2">'.$match_time.'</div>
+    <div class="col-8">
       <span class="bg-warning rounded p-1">'.$team1_cote.'</span>
        <b>'.$team1.'</b> 
       <span class="second-plan rounded p-1">'.$match_format.'</span>
       <b>'.$team2.'</b> 
       <span class="bg-warning rounded p-1">'.$team2_cote.'</span>
     </div>
-    <div class="col">'.$match_tournament.'</div>
+    <div class="col-2">'.$match_tournament.'</div>
   </div>
 ';
 
 $daily_matches_struct = '
-  <div class="mt-2 mb-2 p-2 d-flex flex-column align-items-center second-plan rounded">
 
     <h3 class="mt-1 mb-1 border-bottom w-100">Date</h3>    
 
     <div class="p-2 text-white w-100 text-center align-items-center rounded first-plan">
       <div class="row">
-        <div class="col">Heure</div>
-        <div class="col">Match</div>
-        <div class="col">Tournois</div>
+        <div class="col-2">Heure</div>
+        <div class="col-8">Match</div>
+        <div class="col-2">Tournois</div>
       </div>
     '.$matches_line.$matches_line.$matches_line.'
-    </div>
   </div>
 '; // stock les divs des matches à afficher
 
@@ -84,6 +82,7 @@ $teams_struct = '
 
 $teams = $teams_struct;
 
+
 // les valeurs sont des exemples 
 $tournament_name ="Navi";
 $tournament_cashprize="9999$";
@@ -100,7 +99,6 @@ $tournaments_line = '
 ';
 
 $tournaments_struct = '
-  <div class="mt-2 mb-2 p-2 d-flex flex-column align-items-center second-plan rounded">
     <h3 class="mt-3 mb-2 border-bottom w-100">Mois</h3>    
     <div class="mb-3 p-2 text-white w-100 text-center align-items-center rounded first-plan">
      <div class="row mt-1 mb-1">
@@ -110,11 +108,12 @@ $tournaments_struct = '
       <div class="col-3 d-flex justify-content-start">Participants</div>
      </div>
      '.$tournaments_line.$tournaments_line.$tournaments_line.'
-    </div>
   </div>
 '; // stock les divs des tournaments à afficher
 
 $tournaments = $tournaments_struct.$tournaments_struct;
+
+
 
 ?>
 		
