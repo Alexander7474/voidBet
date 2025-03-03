@@ -1,0 +1,47 @@
+/* Container global */
+.d-flex {
+    display: flex;
+}
+
+/* Menu latéral */
+#sidebar {
+    background-color: #343a40;
+    color: white;
+    padding: 20px;
+    width: 250px;
+    height: 100vh; /* Prend toute la hauteur de la page */
+    border-right: 4px solid #f8f9fa; /* Séparation entre le menu et le contenu */
+}
+
+/* Titre du menu */
+#sidebar h2 {
+    text-align: center;
+    padding-bottom: 20px;
+    color: #0066ff;
+}
+
+/* Lien dans le menu */
+#sidebar .nav-link {
+    color: white;
+    text-transform: uppercase; /* Met le texte en majuscule */
+    padding: 10px;
+    font-weight: bold;
+    text-decoration: none; /* enlève le soulignementdu texte */
+}
+
+#sidebar .nav-item {
+    margin-bottom: 20px;
+}
+
+#sidebar .nav-link:hover {
+    color: #adb5bd;
+    background-color: #007bff; /* Couleur d'arrière-plan au survol */
+}
+
+/* Contenu principal */
+#content {
+    background-color: #7f98b1;
+    padding: 20px;
+    flex-grow: 1; /* Le contenu prend l'espace restant */
+    margin-left: 10px;
+}
