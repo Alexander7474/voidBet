@@ -12,8 +12,7 @@
 		
 	</head>
 	
-	<body>
-	
-	<header>
-		<?php include("menu_nav.php"); ?>
-	</header>
+<body class="third-plan">
+	<header class="second-plan align-items-center">
+    <?php include("menu_nav.php"); ?>
+  </header> 

@@ -1,11 +1,22 @@
+.color1 {color: #485568;}
+.color2 {color: #6a6675;}
+.color3 {color: #898487;}
+.color4 {color: #a5a4a4;}
+.color5 {color: #b4b8b9;}
+
 .first-plan {
-  background-color: #A6785D;
+  background-color: #898487;
+}
+
+.first-plan-h:hover {
+  background-color: #a5a4a4;
 }
 
 .second-plan {
-  background-color: #594031;
+  background-color: #6a6675;
 }
 
 .third-plan {
-  background-color: #261E17;
+  background-color: #485568;
 }
+
