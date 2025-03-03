@@ -1,23 +1,23 @@
-.color1 {color: #485568;}
-.color2 {color: #6a6675;}
-.color3 {color: #898487;}
-.color4 {color: #a5a4a4;}
-.color5 {color: #b4b8b9;}
+.color1 {color: #12101b;}
+.color2 {color: #2b2332;}
+.color3 {color: #47474e;}
+.color4 {color: #766d7a;}
+.color5 {color: #b69eb1;}
 
 .first-plan {
-  background-color: #898487;
+  background-color: #47474e;
 }
 
 .first-plan-h:hover {
-  background-color: #a5a4a4;
+  background-color: #766d7a;
 }
 
 .second-plan {
-  background-color: #6a6675;
+  background-color: #2b2332;
 }
 
 .third-plan {
-  background-color: #485568;
+  background-color: #12101b;
 }
 
 a {
