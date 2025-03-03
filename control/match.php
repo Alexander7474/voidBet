@@ -79,9 +79,5 @@ if(isset($_GET['match_id'])){
 }
 
 ?>
-		
-
-<?php 
-?>
 
 <?php /*template*/  include($racine_path.'templates/front/footer.php');?>

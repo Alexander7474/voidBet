@@ -5,6 +5,18 @@ ini_set('display_errors', '1');
 $title = "Accueil";
 $racine_path = "./";
 
+/*template*/  include($racine_path.'templates/front/header.php');
+
+echo '<div class="container text-white">';
+echo '<div class="row">';
+  echo '<div class="col">'; // colonne match
+
+
+/*template*/  include($racine_path.'templates/front/match_template.php');
+
+// traitement pour récupérer la liste des matchs disponnibles 
+//
+
 // les valeurs sont des exemples 
 $team1 ="Spirit";
 $team2 ="Navi";
@@ -14,113 +26,93 @@ $match_tournament="Cologne";
 $team1_cote="1.32";
 $team2_cote="2.52";
 
-$matches_top = '
+$date = "Un jour";
 
-';
+$match_bet_link = $racine_path.'control/match.php?match_id=0';
 
-$matches_line = '
-  <div class="row first-plan-h mt-3">
-    <div class="col-2">'.$match_time.'</div>
-    <div class="col-8">
-      <span class="bg-warning rounded p-1">'.$team1_cote.'</span>
-       <b>'.$team1.'</b> 
-      <span class="second-plan rounded p-1">'.$match_format.'</span>
-      <b>'.$team2.'</b> 
-      <span class="bg-warning rounded p-1">'.$team2_cote.'</span>
-    </div>
-    <div class="col-2">'.$match_tournament.'</div>
-  </div>
-';
+include($racine_path.'templates/front/daily_match.php');
+include($racine_path.'templates/front/match_line.php');
+include($racine_path.'templates/front/match_line.php');
+include($racine_path.'templates/front/match_line.php');
+include($racine_path.'templates/front/match_line.php');
+include($racine_path.'templates/front/match_line.php');
 
-$daily_matches_struct = '
+echo'</div>';
+include($racine_path.'templates/front/daily_match.php');
+include($racine_path.'templates/front/match_line.php');
+include($racine_path.'templates/front/match_line.php');
+include($racine_path.'templates/front/match_line.php');
+include($racine_path.'templates/front/match_line.php');
+include($racine_path.'templates/front/match_line.php');
 
-    <h3 class="mt-1 mb-1 border-bottom w-100">Date</h3>    
+echo'</div>';
+include($racine_path.'templates/front/daily_match.php');
+include($racine_path.'templates/front/match_line.php');  
+include($racine_path.'templates/front/match_line.php');
 
-    <div class="p-2 text-white w-100 text-center align-items-center rounded first-plan">
-      <div class="row">
-        <div class="col-2">Heure</div>
-        <div class="col-8">Match</div>
-        <div class="col-2">Tournois</div>
-      </div>
-    '.$matches_line.$matches_line.$matches_line.'
-  </div>
-'; // stock les divs des matches à afficher
+echo '</div></div></div>'; //fermeture de match template
 
-$matches = $daily_matches_struct.$daily_matches_struct.$daily_matches_struct;
+echo '</div>'; //fermeture de la colonne match
+echo '<div class="col">'; // colonne team/tounois
+  echo '<div class="row>'; // ligne team
+
+/*template*/  include($racine_path.'templates/front/team_template.php');
 
 // les valeurs sont des exemples 
 $team_name ="Navi";
+$coach = "babineaux";
 $team_cashprize="9999$";
 $players = ["p1", "p2", "p3", "p2", "p3"];
 $player_cashprize="9999$";
 $kd = "0.95";
 
-$teams_line = '
-<h3 class="mt-3 mb-1 border-bottom w-100">Nom équipe</h3>    
-<div class="mb-3 p-2 text-white w-100 text-center align-items-center rounded first-plan">
-  <div class="row mt-1 mb-1">
-    <div class="col"><b>Coach</b></div>
-    <div class="col"></div>
-';
 
-foreach ($players as $p => $name) {
-  $teams_line = $teams_line. '
-    <div class="col"><b>'.$name.'</b></div>
-  ';
-}
+include($racine_path.'templates/front/team_line.php');
+include($racine_path.'templates/front/team_line.php');
+include($racine_path.'templates/front/team_line.php');
+include($racine_path.'templates/front/team_line.php');
+include($racine_path.'templates/front/team_line.php');
 
-$teams_line = $teams_line.'
-  </div>
-</div>
-';
+echo '</div>';
+echo '</div>'; // fermeture de team template
 
-$teams_struct = '
-  <div class="mt-2 mb-2 p-2 d-flex flex-column align-items-center second-plan rounded">
-    '.$teams_line.$teams_line.$teams_line.'
-  </div>
-'; // stock les divs des teams à afficher
+echo '</div>'; // fermeture de la ligne team
+echo '<div class="row>'; // ligne tournois
 
-$teams = $teams_struct;
-
+/*template*/  include($racine_path.'templates/front/tournament_template.php');
 
 // les valeurs sont des exemples 
-$tournament_name ="Navi";
+//
+$tournament_name ="Katowice";
 $tournament_cashprize="9999$";
-$player_cashprize="9999$";
-$kd = "0.95";
+$tournament = $tournament_name. ' / ' . $tournament_cashprize;
+$tournament_date="sometime";
+$tournament_tier="S tier";
+$tournament_teams="x | y | z";
 
-$tournaments_line = '
-  <div class="row">
-    <div class="col-5 d-flex justify-content-start"><b>Cologne / 400 000 $</b></div>
-    <div class="col-1">S tier</div>
-    <div class="col-3">25/10/2025 - 26/10/2025</div>
-    <div class="col-3 d-flex justify-content-start">xyz</div>
-  </div>
-';
+$month = "Mois";
 
-$tournaments_struct = '
-    <h3 class="mt-3 mb-2 border-bottom w-100">Mois</h3>    
-    <div class="mb-3 p-2 text-white w-100 text-center align-items-center rounded first-plan">
-     <div class="row mt-1 mb-1">
-      <div class="col-5 d-flex justify-content-start">Tournois/Prix</div>
-      <div class="col-1">Niveau</div>
-      <div class="col-3">Date</div>
-      <div class="col-3 d-flex justify-content-start">Participants</div>
-     </div>
-     '.$tournaments_line.$tournaments_line.$tournaments_line.'
-  </div>
-'; // stock les divs des tournaments à afficher
+include($racine_path.'templates/front/tournament_struct.php');
+include($racine_path.'templates/front/tournament_line.php');
+include($racine_path.'templates/front/tournament_line.php');
+include($racine_path.'templates/front/tournament_line.php');
+echo '</div>';
 
-$tournaments = $tournaments_struct.$tournaments_struct;
+include($racine_path.'templates/front/tournament_struct.php');
+include($racine_path.'templates/front/tournament_line.php');
+include($racine_path.'templates/front/tournament_line.php');
+include($racine_path.'templates/front/tournament_line.php');
+echo '</div>';
 
+echo '</div>';
+echo '</div>'; //fermeture de tournament template
 
+echo '</div>'; //fermeture de la ligne tournois
+
+echo '</div>'; // fermeture de la row de index
+
+echo '</div>'; // fermeture du container de index
 
 ?>
 		
-<?php /*template*/  include($racine_path.'templates/front/header.php');?>
-
-<?php 
-/*template*/  include($racine_path.'templates/front/main.php');
-?>
-
 <?php /*template*/  include($racine_path.'templates/front/footer.php');?>

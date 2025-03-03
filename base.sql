@@ -47,8 +47,7 @@ CREATE TABLE matchs (
     resultat VARCHAR(20),
     FOREIGN KEY (id_equipe1) REFERENCES equipes(id_equipe),
     FOREIGN KEY (id_equipe2) REFERENCES equipes(id_equipe),
-    FOREIGN KEY (id_tournoi) REFERENCES tournois(id_tournoi),
-    CHECK (id_equipe1 <> id_equipe2)
+    FOREIGN KEY (id_tournoi) REFERENCES tournois(id_tournoi)
 );
 
 CREATE TABLE bet_on_score (
