@@ -17,10 +17,8 @@
         <form>
           <h5>Contact us</h5>
           <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-            <label for="newsletter1" class="visually-hidden">Email address</label>
             <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-            <label for="newsletter1" class="visually-hidden">Nom</label>
-zsh:1: command not found: :wqa
+            <input id="newsletter1" type="text" class="form-control" placeholder="Nom">
             <button class="btn btn-primary" type="button">Envoyer</button>
           </div>
         </form>

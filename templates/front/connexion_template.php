@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="container  text-white rounded mb-3 mt-3 second-plan ">
     <h3>Page de connexion</h3>
     <p>Complétez tous les champs</p>
         
