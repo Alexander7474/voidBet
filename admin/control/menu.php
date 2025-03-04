@@ -1,0 +1,4 @@
+<?php
+    $racine_path = '../';
+
+?>
