@@ -5,8 +5,6 @@
 
 /* Menu latéral */
 #sidebar {
-    background-color: #343a40;
-    color: white;
     padding: 20px;
     width: 250px;
     height: 100vh; /* Prend toute la hauteur de la page */
@@ -17,12 +15,11 @@
 #sidebar h2 {
     text-align: center;
     padding-bottom: 20px;
-    color: #0066ff;
+    color: white;
 }
 
 /* Lien dans le menu */
 #sidebar .nav-link {
-    color: white;
     text-transform: uppercase; /* Met le texte en majuscule */
     padding: 10px;
     font-weight: bold;
@@ -33,15 +30,30 @@
     margin-bottom: 20px;
 }
 
-#sidebar .nav-link:hover {
-    color: #adb5bd;
-    background-color: #007bff; /* Couleur d'arrière-plan au survol */
+
+.color1 {color: #12101b;}
+.color2 {color: #2b2332;}
+.color3 {color: #47474e;}
+.color4 {color: #766d7a;}
+.color5 {color: #b69eb1;}
+
+.first-plan {
+  background-color: #47474e;
 }
 
-/* Contenu principal */
-#content {
-    background-color: #7f98b1;
-    padding: 20px;
-    flex-grow: 1; /* Le contenu prend l'espace restant */
-    margin-left: 10px;
+.first-plan-h:hover {
+  background-color: #766d7a;
+}
+
+.second-plan {
+  background-color: #2b2332;
+}
+
+.third-plan {
+  background-color: #12101b;
+}
+
+a {
+  color: white; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
 }

@@ -1,6 +1,6 @@
 <?php
     // dossir template
-    $chemin = "templates/back/";
+    $chemin = "control/";
     $pageMenu = "menu.php";
     $pageCSS = "style.css";
 
