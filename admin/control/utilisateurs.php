@@ -1,17 +1,31 @@
 
 <?php
-    $racine_path="./";
+    
+    $racine_path="../";
+
+    // template
+    include($racine_path.'templates/back/menu_nav.php');
+
+    // valeur pour exemple
     $titre="utilisateurs";
     $nom ="Roméo";
     $prenom ="Alpha";
+    $pseudo="RA";
     $email="RA@gmail.com";
 
-echo '</div>';
-    "<h1>Gestion des $page </h1>";
-    include($racine_path.'templates/back/utilisateurs_template.php');
+
+    include($racine_path.'templates/back/utilisateurs_struct.php');
     include($racine_path.'templates/back/utilisateurs_line.php');
     include($racine_path.'templates/back/utilisateurs_line.php');
     include($racine_path.'templates/back/utilisateurs_line.php');
     include($racine_path.'templates/back/utilisateurs_line.php');
-echo '</div>';
+    include($racine_path.'templates/back/utilisateurs_line.php');
+    include($racine_path.'templates/back/utilisateurs_line.php');
+    include($racine_path.'templates/back/utilisateurs_line.php');
+    include($racine_path.'templates/back/utilisateurs_line.php');
+    include($racine_path.'templates/back/utilisateurs_line.php');
+    include($racine_path.'templates/back/utilisateurs_line.php');
+    include($racine_path.'templates/back/utilisateurs_line.php');
+    include($racine_path.'templates/back/utilisateurs_line.php');
+    echo '</div></div>';
 ?>

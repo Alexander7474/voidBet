@@ -1,8 +1,7 @@
 <?php
-    // dossir template
-    $chemin = "control/";
-    $pageMenu = "menu.php";
-    $pageCSS = "style.css";
+    $racine_path = './';
 
-    include $chemin . $pageMenu;
+    include $racine_path . "control/menu_nav.php";
+
+    echo '</body>';
 ?>

@@ -1,7 +1,8 @@
 <?php
-    $racine_path = './';
-    $chemin = "templates/back/";
-    $pageMenu = "menu.php";
+    $racine_path = '../';
 
-    include $racine_path . $chemin . $pageMenu;
+    include $racine_path . "templates/back/menu_nav.php";
+    include $racine_path . "templates/back/utilisateurs.php";
+
+    echo '</div></div></div>';
 ?>

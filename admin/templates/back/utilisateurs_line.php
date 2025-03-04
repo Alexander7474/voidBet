@@ -1,7 +1,6 @@
-<div class="row first-plan-h mt-3">
-    <div class="col-8">
-        <span class="bg-warning rounded p-1"><?php echo $nom; ?></span>
-        <b><?php echo $prenom; ?></b> 
-        <span class="second-plan rounded p-1"><?php echo $email; ?></span>
-    </div>
-</div>
+            <div class="row">
+                <div class="col-3 d-flex justify-content-start"><b><?php echo $nom; ?></b></div>
+                    <div class="col-3"><?php echo $prenom; ?></div>
+                    <div class="col-3"><?php echo $pseudo; ?></div>
+                    <div class="col-3 d-flex justify-content-start"><b><?php echo $email; ?></b></div>
+                </div>
