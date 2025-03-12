@@ -51,6 +51,16 @@ CREATE TABLE matchs (
     FOREIGN KEY (id_tournoi) REFERENCES tournois(id_tournoi)
 );
 
+--Table users
+CREATE TABLE users (
+  id_user SERIAL PRIMARY KEY,
+  username VARCHAR(50) NOT NULL,
+  password VARCHAR(200) NOT NULL,
+  email VARCHAR(200) NOT NULL,
+  void_coin DOUBLE PRECISION,
+  date_creation DATE
+);
+
 CREATE TABLE bets (
   id_paris SERIAL PRIMARY KEY,
   id_match INT NOT NULL,
@@ -77,12 +87,4 @@ CREATE TABLE bet_on_result (
   FOREIGN KEY (id_paris) REFERENCES bets(id_paris)
 );
 
---Table users
-CREATE TABLE users (
-  id_user SERIAL PRIMARY KEY,
-  username VARCHAR(50) NOT NULL,
-  password VARCHAR(200) NOT NULL,
-  email VARCHAR(200) NOT NULL,
-  void_coin DOUBLE PRECISION,
-  date_creation DATE
-);
+
