@@ -3,13 +3,13 @@ CREATE TABLE tournois (
     id_tournoi SERIAL PRIMARY KEY,
     nom_tournoi VARCHAR(100) NOT NULL,
     date_debut DATE NOT NULL,
-    cash_prize NUMERIC(10, 2) NOT NULL
+    cash_prize INT
 );
 
 -- Table coachs
 CREATE TABLE coachs (
     id_coach SERIAL PRIMARY KEY,
-    nom_coach VARCHAR(50) NOT NULL
+    pseudo_coach VARCHAR(50) NOT NULL
 );
 
 -- Table equipes
@@ -44,31 +44,37 @@ CREATE TABLE matchs (
     id_equipe1 INT NOT NULL,
     id_equipe2 INT NOT NULL,
     id_tournoi INT NOT NULL,
-    resultat VARCHAR(20),
+    score1 INT NOT NULL,
+    score2 INT NOT NULL,
     FOREIGN KEY (id_equipe1) REFERENCES equipes(id_equipe),
     FOREIGN KEY (id_equipe2) REFERENCES equipes(id_equipe),
     FOREIGN KEY (id_tournoi) REFERENCES tournois(id_tournoi)
 );
 
-CREATE TABLE bet_on_score (
+CREATE TABLE bets (
   id_paris SERIAL PRIMARY KEY,
   id_match INT NOT NULL,
-  score1 INT NOT NULL,
-  score2 INT NOT NULL,
   date_paris DATE NOT NULL,
-  bet_result BOOLEAN,
+  cote INT NOT NULL,
+  id_user INT NOT NULL,
+  FOREIGN KEY (id_user) REFERENCES users(id_user),
   FOREIGN KEY (id_match) REFERENCES matchs(id_match)
 );
 
+CREATE TABLE bet_on_score (
+  id_paris INT NOT NULL,
+  score1 INT NOT NULL,
+  score2 INT NOT NULL,
+  PRIMARY KEY(id_paris),
+  FOREIGN KEY (id_paris) REFERENCES bets(id_paris)
+);
+
 CREATE TABLE bet_on_result (
-  id_paris SERIAL PRIMARY KEY,
-  id_match INT NOT NULL,
+  id_paris INT NOT NULL,
   result VARCHAR(10) NOT NULL,
   id_equipe INT NOT NULL,
-  date_paris DATE NOT NULL,
-  bet_result BOOLEAN,
-  FOREIGN KEY (id_equipe) REFERENCES equipes(id_equipe),
-  FOREIGN KEY (id_match) REFERENCES matchs(id_match)
+  PRIMARY KEY(id_paris),
+  FOREIGN KEY (id_paris) REFERENCES bets(id_paris)
 );
 
 --Table users
