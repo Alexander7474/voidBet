@@ -73,18 +73,37 @@
     }
 		
 		public function updateUser($user){
+			// Connexion àla bd
+			$BD = new GestionBD();
+			$BD->connexion();
 			
+			$sql = 'UPDATE users SET pseudo=:pseudo, password=:password, email=:email, void_coin=:void_coin  WHERE id_user=:id_user';
+			$stat = $BD->pdo->prepare($sql);
+      $stat->bindParam('id_user', $user->id_user);
+      $stat->bindParam('pseudo', $user->pseudo);
+			$stat->bindParam('password', $user->password);
+			$stat->bindParam('email', $user->email);
+			$stat->bindParam('void_coin', $user->void_coin);
+			$stat->execute();
+			$BD->deconnexion();
 		}
 		
-		public function saveAnimal($user){
+		public function saveUser($user){
+			// Connexion àla bd
+			$BD = new GestionBD();
+			$BD->connexion();
 			
+			$sql = 'INSERT INTO users(pseudo, password, email, void_coin) VALUES (:pseudo, :password, :email, :void_coin);';
+			$stat = $BD->pdo->prepare($sql);
+			$stat->bindParam('pseudo', $user->pseudo);
+			$stat->bindParam('password', $user->password);
+			$stat->bindParam('email', $user->email);
+			$stat->bindParam('void_coin', $user->void_coin);
+			$stat->execute();
+			$BD->deconnexion();
 		}
 		
   }
-
-  $test = new User();
-  $user = $test->getUser($test->getUserId("jhon84"));
-  print_r($user);
-
+ 
 ?>
 
