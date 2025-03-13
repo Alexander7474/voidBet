@@ -54,7 +54,7 @@ CREATE TABLE matchs (
 --Table users
 CREATE TABLE users (
   id_user SERIAL PRIMARY KEY,
-  username VARCHAR(50) NOT NULL,
+  pseudo VARCHAR(50) NOT NULL,
   password VARCHAR(200) NOT NULL,
   email VARCHAR(200) NOT NULL,
   void_coin DOUBLE PRECISION,

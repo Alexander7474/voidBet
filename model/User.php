@@ -71,7 +71,9 @@
   }
 
   $test = new User();
-  print_r($test->listeUsers());
+  $users = $test->listeUsers();
+  print_r($users);
+  $users[0]->showInfo();
 
 ?>
 
