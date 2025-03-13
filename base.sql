@@ -58,7 +58,7 @@ CREATE TABLE users (
   password VARCHAR(200) NOT NULL,
   email VARCHAR(200) NOT NULL,
   void_coin DOUBLE PRECISION,
-  date_creation DATE
+  date_creation DATE DEFAULT now()
 );
 
 CREATE TABLE bets (

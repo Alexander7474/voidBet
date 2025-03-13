@@ -8,8 +8,6 @@
     require($racine_path.'model/GestionBD.php');
     use bd\GestionBD;
 
-    
-
     include($racine_path.'templates/front/header.php');
     include($racine_path.'templates/front/connexion_template.php');
     include($racine_path.'templates/front/footer.php');
