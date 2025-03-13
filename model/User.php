@@ -72,13 +72,11 @@
 			return $id["id_user"];
     }
 		
-		public function updateAnimal($animal){
-			// a faire
+		public function updateUser($user){
 			
 		}
 		
-		public function saveAnimal($animal){
-			// a faire
+		public function saveAnimal($user){
 			
 		}
 		
