@@ -9,18 +9,20 @@ namespace classe;
     public $password;
     public $void_coin;
 		
-		public function __construct($id_user=-1, $pseudo='', $email='', $password='', $void_coin=0){
+		public function __construct($id_user=-1, $pseudo='', $email='', $password='', $void_coin=0, $age=0){
       $this->id_user = $id_user;
 			$this->pseudo = $pseudo;
 			$this->email = $email;
       $this->password = $password;
       $this->void_coin = $void_coin;
+      $this->age = $age;
     }
 
     public function showInfo(){
       echo "\npseudo: ".$this->pseudo;
       echo "\npassword: ".$this->password;
       echo "\nemail: ".$this->email;
+      echo "\nage: ".$this->age;
       echo "\nvoid_coin: ".$this->void_coin;
       echo "\nid_user: ".$this->id_user;
     }

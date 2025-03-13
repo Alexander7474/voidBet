@@ -33,30 +33,44 @@
 			return $users;
 		}
 		
-		public function getAnimal($id){
+		public function getUser($id){
 			// Connexion àla bd
 			$BD = new GestionBD();
 			$BD->connexion();
 			
-			//$sql = 'SELECT * from site."Animal" where id=:id;';
-			$sql = 'SELECT * from animal where id=:id;';
+			$sql = 'SELECT * from users where id_user=:id_user;';
 			$stat = $BD->pdo->prepare($sql);
-			$stat->bindParam('id', $id);
+			$stat->bindParam('id_user', $id);
 			$stat->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'classe\User');
 			$stat->execute();
-			$animal = $stat->fetch();
+			$user = $stat->fetch();
 			$BD->deconnexion();
 			
-			// si l'animal n'existe pas en base de donnée je renvoie une page 404, 
-			// le mieux serait d'avoir une page propre à votre site, du style Oups la page n'existe plus...
-			// Et une redirection vers l'accueil
-			if(!$animal){
-				header('HTTP/1.0 404 Not Found');
-				exit;
+			if(!$user){
+				return null;
 			}
 			
-			return $animal;
-		}
+			return $user;
+    }
+
+    public function getUserId($pseudo){
+			// Connexion àla bd
+			$BD = new GestionBD();
+			$BD->connexion();
+			
+			$sql = 'SELECT id_user from users where pseudo=:pseudo;';
+			$stat = $BD->pdo->prepare($sql);
+			$stat->bindParam('pseudo', $pseudo);
+			$stat->execute();
+		  $id = $stat->fetch(PDO::FETCH_ASSOC);
+			$BD->deconnexion();
+			
+			if(!$id){
+				return -1;
+			}
+			
+			return $id["id_user"];
+    }
 		
 		public function updateAnimal($animal){
 			// a faire
@@ -71,9 +85,8 @@
   }
 
   $test = new User();
-  $users = $test->listeUsers();
-  print_r($users);
-  $users[0]->showInfo();
+  $user = $test->getUser($test->getUserId("jhon84"));
+  print_r($user);
 
 ?>
 
