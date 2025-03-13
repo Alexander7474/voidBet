@@ -18,8 +18,9 @@
 		}
 		
 		public function deconnexion(){
-			// faire la deconnexion
+			$pdo = null;
 		}
 			
-	}
+  }
+
 ?>
