@@ -8,8 +8,7 @@
     require($racine_path.'model/GestionBD.php');
     use bd\GestionBD;
 
-    $BD = new GestionBD();
-		$BD->connexion();
+    
 
     include($racine_path.'templates/front/header.php');
     include($racine_path.'templates/front/connexion_template.php');
