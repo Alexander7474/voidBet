@@ -10,7 +10,7 @@ class Equipe
     public $nat;
     public $tableau_joueur;
     
-    public function __construct($id_equipe=-1, $nom_equipe='', $id_coach=-1, $cash_prize=1000.50, $nat='deutsch', $tableau_joueur=0)
+    public function __construct($id_equipe=-1, $nom_equipe='nom', $id_coach=-1, $cash_prize=0, $nat='nationalité', $tableau_joueur=0)
     {
         $this->id_equipe = $id_equipe;
         $this->nom_equipe = $nom_equipe;

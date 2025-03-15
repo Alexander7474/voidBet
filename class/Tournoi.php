@@ -8,7 +8,7 @@ class Tournoi
     public $date_debut;
     public $cash_prize;
     
-    public function __construct($id_tournoi=0, $nom_tournoi='', $date_debut='', $cash_prize=0)
+    public function __construct($id_tournoi=-1, $nom_tournoi='nom', $date_debut='aaaa-mm-jj', $cash_prize=0)
     {
         $this->id_tournoi = $id_tournoi;
         $this->nom_tournoi = $nom_tournoi;

@@ -12,7 +12,7 @@ class Matchs
     public $score1;
     public $score2;
             
-    public function __construct($id_match=0, $date_match='', $heure_match='', $id_equipe1=0, $id_equipe2=0, $id_tournoi=0, $score1=0, $score2=0)
+    public function __construct($id_match=-1, $date_match='aaaa-mm-jj', $heure_match='hh:mm:ss', $id_equipe1=-1, $id_equipe2=-1, $id_tournoi=-1, $score1=0, $score2=0)
     {
         $this->id_match = $id_match;
         $this->date_match = $date_match;
