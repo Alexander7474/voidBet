@@ -23,7 +23,7 @@ CREATE TABLE equipes (
 );
 
 -- Table composition d'equipe (Multivalué)
-CREATE TABLE composition_Equipe (
+CREATE TABLE composition_equipe (
     id_equipe INT NOT NULL,
     id_joueur INT NOT NULL,
     PRIMARY KEY (id_equipe, id_joueur),

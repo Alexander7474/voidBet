@@ -9,7 +9,7 @@ use \PDO;
 require('../class/Equipe.php');
 
 // pour pouvoir créer la connexion à la BD
-require('GestionBD.php');
+require_once('GestionBD.php');
 use bd\GestionBD;
 
 // classe Animal comme définit sur le diagramme de classe
@@ -65,7 +65,7 @@ class Equipe
 		$stat = $BD->pdo->prepare($sql);
 		$stat->bindParam('nom_equipe', $nom);
 		$stat->execute();
-	  	$id = $stat->fetch(PDO::FETCH_ASSOC);
+	  $id = $stat->fetch(PDO::FETCH_ASSOC);
 		$BD->deconnexion();
 
 		if(!$id)
@@ -103,6 +103,25 @@ class Equipe
 		$stat->bindParam('id_coach', $equipe->id_coach);
 		$stat->execute();
 		$BD->deconnexion();
-	}
-}
+  }
+
+  public function getIdJoueursEquipe($id){
+		// Connexion àla bd
+		$BD = new GestionBD();
+		$BD->connexion();
+		
+		$sql = 'SELECT * from composition_equipe where id_equipe=:id_equipe;';
+		$stat = $BD->pdo->prepare($sql);
+		$stat->bindParam('id_equipe', $id);
+    $stat->execute();
+
+    $ids = array_column($stat->fetchAll(PDO::FETCH_ASSOC), 'id_joueur');
+
+		$BD->deconnexion();
+
+    return $ids;
+  }
+
+  }
+
 ?>
