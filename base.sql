@@ -81,5 +81,3 @@ CREATE TABLE bet_on_result (
   PRIMARY KEY(id_paris),
   FOREIGN KEY (id_paris) REFERENCES bets(id_paris)
 );
-
-
