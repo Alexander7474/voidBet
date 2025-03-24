@@ -6,10 +6,12 @@ CREATE TABLE tournois (
     cash_prize INT
 );
 
--- Table coachs
-CREATE TABLE coachs (
-    id_coach SERIAL PRIMARY KEY,
-    pseudo_coach VARCHAR(50) NOT NULL
+-- Table joueurs
+CREATE TABLE joueurs (
+    id_joueur SERIAL PRIMARY KEY,
+    pseudo VARCHAR(50) NOT NULL,
+    nationalite VARCHAR(30),
+    is_coach BOOLEAN
 );
 
 -- Table equipes
@@ -17,14 +19,7 @@ CREATE TABLE equipes (
     id_equipe SERIAL PRIMARY KEY,
     nom_equipe VARCHAR(50) NOT NULL,
     id_coach INT,
-    FOREIGN KEY (id_coach) REFERENCES coachs(id_coach)
-);
-
--- Table joueurs
-CREATE TABLE joueurs (
-    id_joueur SERIAL PRIMARY KEY,
-    pseudo VARCHAR(50) NOT NULL,
-    nationalite VARCHAR(30)
+    FOREIGN KEY (id_coach) REFERENCES joueurs(id_joueur)
 );
 
 -- Table composition d'equipe (Multivalué)
