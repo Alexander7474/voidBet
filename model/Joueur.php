@@ -81,7 +81,7 @@
       $stat->bindParam('id_joueur', $joueur->id_joueur);
       $stat->bindParam('pseudo', $joueur->pseudo);
       $stat->bindParam('nationalite', $joueur->nationalite);
-      $stat->bindParam('is_coach', $joueur->is_coach);
+      $stat->bindParam('is_coach', $joueur->is_coach, PDO::PARAM_BOOL);
 			$stat->execute();
 			$BD->deconnexion();
 		}
@@ -95,12 +95,12 @@
 			$stat = $BD->pdo->prepare($sql);
 			$stat->bindParam('pseudo', $joueur->pseudo);
       $stat->bindParam('nationalite', $joueur->nationalite);
-      $stat->bindParam('is_coach', $joueur->is_coach);
+      $stat->bindParam('is_coach', $joueur->is_coach, PDO::PARAM_BOOL);
 			$stat->execute();
 			$BD->deconnexion();
 		}
 		
   }
- 
+
 ?>
 
