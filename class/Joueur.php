@@ -8,7 +8,7 @@ namespace classe;
     public $is_coach;
     public $id_joueur;
 		
-		public function __construct($id_joueur=-1, $pseudo='default_pseudo', $age=0, $nationalite='undefined', $is_coach=false){
+		public function __construct($id_joueur=-1, $pseudo='default_pseudo', $age=0, $nationalite='undefined',$is_coach=FALSE){
       $this->id_joueur = $id_joueur;
 			$this->pseudo = $pseudo;
       $this->age = $age;
@@ -21,7 +21,8 @@ namespace classe;
       echo "\nage: ".$this->age;
       echo "\nid_joueur: ".$this->id_joueur;
       echo "\nnationalite: ".$this->nationalite;
-      echo "\nis_coach: ".$$this->is_coach;
+      echo "\nis_coach: ";
+      echo $this->is_coach ? 'true' : 'false';
     }
 		
   }

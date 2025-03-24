@@ -9,7 +9,7 @@
 	require('../class/Joueur.php');
 	
 	// pour pouvoir créer la connexion à la BD
-	require('GestionBD.php');
+	require_once('GestionBD.php');
 	use bd\GestionBD;
 
 	// classe Joueur comme définit sur le diagramme de classe
