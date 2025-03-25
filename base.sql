@@ -31,6 +31,15 @@ CREATE TABLE composition_equipe (
     FOREIGN KEY (id_joueur) REFERENCES joueurs(id_joueur)
 );
 
+-- Table composition tournois (Multivalué)
+CREATE TABLE composition_tournoi (
+    id_equipe INT NOT NULL,
+    id_tournoi INT NOT NULL,
+    PRIMARY KEY (id_equipe, id_tournoi),
+    FOREIGN KEY (id_equipe) REFERENCES equipes(id_equipe),
+    FOREIGN KEY (id_tournoi) REFERENCES tournois(id_tournoi)
+);
+
 -- Table mtchs
 CREATE TABLE matchs (
     id_match SERIAL PRIMARY KEY,
