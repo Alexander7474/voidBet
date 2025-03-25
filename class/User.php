@@ -1,7 +1,7 @@
 <?php
 namespace classe;
 
-  require("Personne.php");
+  require_once("Personne.php");
 
 	class User extends Personne{
     public $id_user;
@@ -9,7 +9,7 @@ namespace classe;
     public $password;
     public $void_coin;
 		
-		public function __construct($id_user=-1, $pseudo='default_pseudo', $email='email@email.com', $password='password', $void_coin=0, $age=0){
+		public function __construct($id_user=-1, $pseudo='default_pseudo', $email='email@email.com', $password='password', $age=0, $void_coin=0){
       $this->id_user = $id_user;
 			$this->pseudo = $pseudo;
 			$this->email = $email;
