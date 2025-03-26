@@ -17,6 +17,21 @@ use bd\Equipe;
 require_once($racine_path."model/Tournoi.php");
 use bd\Tournoi;
 
+require_once($racine_path."model/BetOnScore.php");
+use bd\BetOnScore;
+
+require_once($racine_path."model/BetOnResult.php");
+use bd\BetOnResult;
+
+require_once($racine_path."class/BetOnScore.php");
+
+require_once($racine_path."class/BetOnResult.php");
+
+require_once($racine_path."model/Bet.php");
+use bd\Bet;
+
+require_once($racine_path."class/Bet.php");
+
 $equipeDB = new Equipe();
 $matchsDB = new Matchs();
 $tournoiDB = new Tournoi();
@@ -47,6 +62,7 @@ if(isset($_GET['match_id'])){
   $team2_cote=$m->cote2;
 
   $match_bet_link = $racine_path.'control/match.php?match_id='.$m->id_match;
+  $match_id = $m->id_match;
 
   include($racine_path.'templates/front/daily_match.php');
   include($racine_path.'templates/front/match_line.php');
@@ -54,6 +70,66 @@ if(isset($_GET['match_id'])){
   echo '</div>';
 
   include($racine_path.'templates/front/match_bet.php');
+
+   
+  if(isset($_GET['bet_value']) && isset($_GET['result']) && isset($_GET['selected_team']) && isset($_GET['score1']) && isset($_GET['score2'])){ // on enregistre le paris 
+
+    $betDB = new Bet();
+
+    $bet = new classe\Bet();
+    $bet->id_match = $_GET['match_id'];
+    $bet->date_paris = date('Y-m-d');
+    $bet->valeur = $_GET['bet_value'];
+
+    //rajouter des test sur les fonds avec la session
+
+    $bet->id_user = 1; // a gérer avec la session a l'avenir
+
+    if(isset($_GET['on_score'])){ //paris sur le score-------------------------------
+      $betScoreDB = new BetOnScore();
+
+      if($_GET['score1'] > $_GET['score2']){
+        $bet->cote = $team1_cote;
+      }else{
+        $bet->cote = $team2_cote;
+      }
+
+      $id_paris = $betDB->saveBet($bet); // save du paris
+
+      $betScore = new classe\BetOnScore();
+
+      $betScore->id_paris = $id_paris;
+      $betScore->score1 = $_GET['score1'];
+      $betScore->score2 = $_GET['score2'];
+
+      $betScoreDB->saveBetOnScore($betScore);
+      echo "bet saved";
+    }else{ //paris sur le résultat --------------------------------------------------
+      $betResultDB = new BetOnResult();
+
+      if($_GET['selected_team'] == $t1->nom_equipe){
+        $bet->cote = $team1_cote;
+      }else{
+        $bet->cote = $team2_cote;
+      }
+
+      $id_paris = $betDB->saveBet($bet); // save du paris
+
+      $betResult = new classe\BetOnResult();
+
+      $betResult->id_paris = $id_paris;
+      $betResult->result = $_GET['result'];
+      if($_GET['selected_team'] == $t1->nom_equipe){
+        $betResult->id_equipe = $t1->id_equipe;
+      }else{
+        $betResult->id_equipe = $t2->id_equipe;
+      }
+
+      $betResultDB->saveBetOnResult($betResult);
+      echo "bet saved";
+
+    }// -----------------------------------------------------------------------------
+  }
 
   echo '</div></div>';
 
@@ -96,6 +172,7 @@ if(isset($_GET['match_id'])){
     $team2_cote=$m->cote2;
 
     $match_bet_link = $racine_path.'control/match.php?match_id='.$m->id_match;
+    $match_id = $m->id_match;
 
     include($racine_path.'templates/front/match_line.php');
   }

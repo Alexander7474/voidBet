@@ -6,10 +6,10 @@ namespace bd;
 use \PDO;
 
 // Pour que PDO est la class Animal
-require($racine_path.'class/Bet.php');
+require_once($racine_path.'class/Bet.php');
 
 // pour pouvoir créer la connexion à la BD
-require('GestionBD.php');
+require_once('GestionBD.php');
 use bd\GestionBD;
 
 // classe Animal comme définit sur le diagramme de classe
@@ -83,12 +83,13 @@ class Bet
 		$BD = new GestionBD();
 		$BD->connexion();
 			
-		$sql = 'UPDATE bets SET id_match=:id_match, date_paris=:date_paris, cote=:cote, id_user=:id_user WHERE id_paris=:id_paris';
+		$sql = 'UPDATE bets SET id_match=:id_match, date_paris=:date_paris, valeur=:valeur, cote=:cote, id_user=:id_user WHERE id_paris=:id_paris';
 		$stat = $BD->pdo->prepare($sql);
 		$stat->bindParam('id_paris', $bet->id_paris);
 		$stat->bindParam('id_match', $bet->id_match);
 		$stat->bindParam('date_paris', $bet->date_paris);
 		$stat->bindParam('cote', $bet->cote);
+		$stat->bindParam('valeur', $bet->valeur);
         $stat->bindParam('id_user', $bet->id_user);
 		$stat->execute();
 		$BD->deconnexion();
@@ -99,14 +100,20 @@ class Bet
 		$BD = new GestionBD();
 		$BD->connexion();
 			
-		$sql = 'INSERT INTO bets(id_match, date_paris, cote, id_user) VALUES (:id_match, :date_paris, :cote, :id_user);';
+		$sql = 'INSERT INTO bets(id_match, date_paris, valeur, cote, id_user) VALUES (:id_match, :date_paris, :valeur, :cote, :id_user);';
 		$stat = $BD->pdo->prepare($sql);
 		$stat->bindParam('id_match', $bet->id_match);
 		$stat->bindParam('date_paris', $bet->date_paris);
 		$stat->bindParam('cote', $bet->cote);
+		$stat->bindParam('valeur', $bet->valeur);
         $stat->bindParam('id_user', $bet->id_user);
-		$stat->execute();
-		$BD->deconnexion();
+    $stat->execute();
+
+    $id = $BD->pdo->lastInsertId();
+
+    $BD->deconnexion();
+
+    return $id;
 	}
 }
 ?>

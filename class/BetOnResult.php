@@ -1,7 +1,7 @@
 <?php
 namespace classe;
 
-require("Bet.php");
+require_once("Bet.php");
 
 class BetOnResult extends Bet
 {
