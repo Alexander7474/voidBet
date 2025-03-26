@@ -5,6 +5,7 @@ ini_set('display_errors', '1');
 $in_index=true;
 $title = "Accueil";
 $racine_path = "./";
+$session_user = 1;
 
 /*template*/  include($racine_path.'templates/front/header.php');
 
