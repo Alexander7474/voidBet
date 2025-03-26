@@ -29,7 +29,7 @@
         <ul class="dropdown-menu dropdown-menu-end">
           <li><a class="dropdown-item" href="#">Mon Profil</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item text-danger" href="#">Déconnexion</a></li>
+          <li><a class="dropdown-item text-danger" href="<?php echo $racine_path; ?>control/connexion.php">Déconnexion</a></li>
         </ul>
       <?php }?>
       </div>   

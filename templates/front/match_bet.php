@@ -46,6 +46,9 @@
             <button type="submit" class="btn btn-primary">Soumettre</button>
         </div>
     </form>
+    <?php 
+    include($racine_path."templates/front/error_msg.php");
+    ?>
   </div>
 </div>
 
