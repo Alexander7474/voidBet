@@ -85,15 +85,16 @@ if(isset($_GET['match_id'])){
 
       if(isset($_GET['on_score'])){ //paris sur le score-------------------------------
         $betScoreDB = new BetOnScore();
+        $betScore = new classe\BetOnScore();
         
-        $score1 = $_GET['score1'];
-        $score2 = $_GET['score2'];
+        $betScore->score1 = $_GET['score1'];
+        $betScore->score2 = $_GET['score2'];
 
         //score entré valide ?
-        if($score1 < 0 || $score2 < 0 || $score1 > intdiv($m->format,2)+1 || $score2 > intdiv($m->format,2)+1 || $score1 == $score2 || ($score1 < intdiv($m->format,2)+1 && $score2 < intdiv($m->format,2)+1)) {
+        if(!$betScore->isValid($m)) {
           $error_message = "Score invalide";
         }else{ 
-          if($score1 > $score2){
+          if($betScore->score1 > $betScore->score2){
             $bet->cote = $team1_cote;
           }else{
             $bet->cote = $team2_cote;
@@ -101,11 +102,7 @@ if(isset($_GET['match_id'])){
 
           $id_paris = $betDB->saveBet($bet); // save du paris
 
-          $betScore = new classe\BetOnScore();
-
           $betScore->id_paris = $id_paris;
-          $betScore->score1 = $score1;
-          $betScore->score2 = $score2;
 
           $betScoreDB->saveBetOnScore($betScore);
           $success_message = "Paris sur le score sauvegardé";

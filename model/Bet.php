@@ -48,7 +48,7 @@ class Bet
 		$BD->deconnexion();
 		
 		if(!$bet)
-        {
+    {
 			return null;
 		}
 		
