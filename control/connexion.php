@@ -7,8 +7,6 @@
     require($racine_path.'model/User.php');
     use bd\User;
 
-    $error_message = "";
-
     if(isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['age']) && isset($_POST['mdp']) && isset($_POST['mdp_2'])){ //ajout d'un compte
 
       $userDB = new User();
@@ -66,7 +64,7 @@
       if($id >= 0){
         $user = $userDB->getUser($id);
         if(password_verify($_POST['mdp'], $user->password)){
-          $error_message = 'Connexion réusit';
+          $success_message = 'Connexion réusit';
         }else{
           $error_message = "Impossible  de se connecter";
         }

@@ -1,7 +1,7 @@
 <?php
 namespace classe;
 
-require("Bet.php");
+require_once("Bet.php");
 
 class BetOnResult extends Bet
 {
@@ -19,15 +19,16 @@ class BetOnResult extends Bet
         $this->id_user = $id_user;
     }
 
-    public function showInfo()
+    public function __toString()
     {
-        echo "\n id_paris : ".$this->id_paris;
-        echo "\n result : ".$this->result;
-        echo "\n id_equipe : ".$this->id_equipe;
-        echo "\n id_match : ".$this->id_match;
-        echo "\n date_paris : ".$this->date_paris;
-        echo "\n cote : ".$this->cote;
-        echo "\n id_user : ".$this->id_user;
+        $str = "\n id_paris : ".$this->id_paris;
+        $str = $str .  "\n result : ".$this->result;
+        $str = $str .  "\n id_equipe : ".$this->id_equipe;
+        $str = $str .  "\n id_match : ".$this->id_match;
+        $str = $str .  "\n date_paris : ".$this->date_paris;
+        $str = $str .  "\n cote : ".$this->cote;
+        $str = $str .  "\n id_user : ".$this->id_user;
+        return $str;
     }
 }
 

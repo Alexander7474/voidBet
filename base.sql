@@ -72,7 +72,8 @@ CREATE TABLE bets (
   id_paris SERIAL PRIMARY KEY,
   id_match INT NOT NULL,
   date_paris DATE NOT NULL,
-  cote INT NOT NULL,
+  valeur DOUBLE PRECISION,
+  cote DOUBLE PRECISION,
   id_user INT NOT NULL,
   FOREIGN KEY (id_user) REFERENCES users(id_user),
   FOREIGN KEY (id_match) REFERENCES matchs(id_match)

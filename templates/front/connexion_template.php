@@ -19,17 +19,9 @@
         <button type="submit" class="btn btn-primary">Se connecter</button>
       </div>    
     </div>
-
-    <?php
-    if($error_message != ""){
-      echo '
-       <p>
-          <div class="alert alert-danger">
-          <strong>Erreur! </strong> '.$error_message.'
-          </div>
-        </p>
-      ';
-      }
+    
+    <?php 
+    include $racine_path."templates/front/error_msg.php";
     ?>
-  </form>
+   </form>
 </div>

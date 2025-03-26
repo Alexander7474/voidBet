@@ -16,12 +16,13 @@ class Tournoi
         $this->cash_prize = $cash_prize;
     }
 
-    public function showInfo()
+    public function __toString()
     {
-        echo "\n id_tournoi : ".$this->id_tournoi;
-        echo "\n nom_tournoi : ".$this->nom_tournoi;
-        echo "\n date_debut : ".$this->date_debut;
-        echo "\n cash_prize : ".$this->cash_prize;
+        $str = $str .  "\n id_tournoi : ".$this->id_tournoi;
+        $str = $str .  "\n nom_tournoi : ".$this->nom_tournoi;
+        $str = $str .  "\n date_debut : ".$this->date_debut;
+        $str = $str .  "\n cash_prize : ".$this->cash_prize;
+        return $str;
     }
 }
 

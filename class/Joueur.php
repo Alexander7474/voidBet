@@ -16,13 +16,14 @@ namespace classe;
       $this->is_coach = $is_coach;
     }
 
-    public function showInfo(){
-      echo "\npseudo: ".$this->pseudo;
-      echo "\nage: ".$this->age;
-      echo "\nid_joueur: ".$this->id_joueur;
-      echo "\nnationalite: ".$this->nationalite;
-      echo "\nis_coach: ";
-      echo $this->is_coach ? 'true' : 'false';
+    public function __toString(){
+      $str = $str .  "\npseudo: ".$this->pseudo;
+      $str = $str .  "\nage: ".$this->age;
+      $str = $str .  "\nid_joueur: ".$this->id_joueur;
+      $str = $str .  "\nnationalite: ".$this->nationalite;
+      $str = $str .  "\nis_coach: ";
+      $str = $str .  $this->is_coach ? 'true' : 'false';
+      return $str;
     }
 		
   }

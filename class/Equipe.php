@@ -20,14 +20,15 @@ class Equipe
         $this->tableau_joueur = $tableau_joueur;
     }
 
-    public function showInfo()
+    public function __toString()
     {
-        echo "\n id_equipe : ".$this->id_equipe;
-        echo "\n nom_equipe : ".$this->nom_equipe;
-        echo "\n id_coach : ".$this->id_coach;
-        echo "\n cash_prize : ".$this->cash_prize;
-        echo "\n nat : ".$this->nat;
-        echo "\n tableau_joueur :".$this->tableau_joueur;
+        $str = $str .  "\n id_equipe : ".$this->id_equipe;
+        $str = $str .  "\n nom_equipe : ".$this->nom_equipe;
+        $str = $str .  "\n id_coach : ".$this->id_coach;
+        $str = $str .  "\n cash_prize : ".$this->cash_prize;
+        $str = $str .  "\n nat : ".$this->nat;
+        $str = $str .  "\n tableau_joueur :".$this->tableau_joueur;
+        return $str;
     }
 }
 ?>
