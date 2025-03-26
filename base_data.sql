@@ -1,5 +1,5 @@
 -- Insérer le tournoi avec la bonne date et correction du nom
-INSERT INTO tournois(nom_tournoi, date_debut, cash_prize) VALUES('Blast Spring 2025', '2025-04-10', 10000);
+INSERT INTO tournois(nom_tournoi, date_debut, cash_prize) VALUES('Blast Spring 2025', '2025-03-28', 400000);
 
 -- Insertion des joueurs et coach de l'équipe Spirit
 INSERT INTO joueurs(pseudo, nationalite, is_coach) VALUES
@@ -140,9 +140,9 @@ VALUES((SELECT id_equipe FROM equipes WHERE nom_equipe = 'NaVi'),
        (SELECT id_tournoi FROM tournois WHERE nom_tournoi = 'Blast Spring 2025'));
 
 -- Insérer les matchs des playoffs
-INSERT INTO matchs(date_match, heure_match, id_equipe1, id_equipe2, id_tournoi, score1, score2) VALUES
-('2025-04-10', '15:00', (SELECT id_equipe FROM equipes WHERE nom_equipe = 'Vitality'), (SELECT id_equipe FROM equipes WHERE nom_equipe = 'Eternal Fire'), (SELECT id_tournoi FROM tournois WHERE nom_tournoi = 'Blast Spring 2025'), -1, -1),
-('2025-04-10', '16:30', (SELECT id_equipe FROM equipes WHERE nom_equipe = 'G2'), (SELECT id_equipe FROM equipes WHERE nom_equipe = 'MOUZ'), (SELECT id_tournoi FROM tournois WHERE nom_tournoi = 'Blast Spring 2025'), -1, -1),
-('2025-04-10', '18:00', (SELECT id_equipe FROM equipes WHERE nom_equipe = 'MOUZ'), (SELECT id_equipe FROM equipes WHERE nom_equipe = 'NaVi'), (SELECT id_tournoi FROM tournois WHERE nom_tournoi = 'Blast Spring 2025'), -1, -1),
-('2025-04-10', '19:30', (SELECT id_equipe FROM equipes WHERE nom_equipe = 'NaVi'), (SELECT id_equipe FROM equipes WHERE nom_equipe = 'Spirit'), (SELECT id_tournoi FROM tournois WHERE nom_tournoi = 'Blast Spring 2025'), -1, -1),
-('2025-04-11', '20:00', (SELECT id_equipe FROM equipes WHERE nom_equipe = 'G2'), (SELECT id_equipe FROM equipes WHERE nom_equipe = 'Spirit'), (SELECT id_tournoi FROM tournois WHERE nom_tournoi = 'Blast Spring 2025'), -1, -1);
+INSERT INTO matchs(date_match, heure_match, format, id_equipe1, id_equipe2, id_tournoi, score1, cote1, score2, cote2) VALUES
+('2025-04-10', '15:00', 3, (SELECT id_equipe FROM equipes WHERE nom_equipe = 'Vitality'), (SELECT id_equipe FROM equipes WHERE nom_equipe = 'Eternal Fire'), (SELECT id_tournoi FROM tournois WHERE nom_tournoi = 'Blast Spring 2025'), -1, 1.2, -1, 4.23),
+('2025-04-10', '16:30', 3, (SELECT id_equipe FROM equipes WHERE nom_equipe = 'G2'), (SELECT id_equipe FROM equipes WHERE nom_equipe = 'MOUZ'), (SELECT id_tournoi FROM tournois WHERE nom_tournoi = 'Blast Spring 2025'), -1, 2.2, -1, 1.8),
+('2025-04-10', '18:00', 3, (SELECT id_equipe FROM equipes WHERE nom_equipe = 'MOUZ'), (SELECT id_equipe FROM equipes WHERE nom_equipe = 'NaVi'), (SELECT id_tournoi FROM tournois WHERE nom_tournoi = 'Blast Spring 2025'), -1, 2.84, -1, 1.36),
+('2025-04-10', '19:30', 3, (SELECT id_equipe FROM equipes WHERE nom_equipe = 'NaVi'), (SELECT id_equipe FROM equipes WHERE nom_equipe = 'Spirit'), (SELECT id_tournoi FROM tournois WHERE nom_tournoi = 'Blast Spring 2025'), -1, 1.02, -1, 7.52),
+('2025-04-11', '20:00', 3, (SELECT id_equipe FROM equipes WHERE nom_equipe = 'G2'), (SELECT id_equipe FROM equipes WHERE nom_equipe = 'Spirit'), (SELECT id_tournoi FROM tournois WHERE nom_tournoi = 'Blast Spring 2025'), -1, 2.2, -1, 2.96);

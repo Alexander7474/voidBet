@@ -3,6 +3,6 @@
      <div class="row mt-1 mb-1">
       <div class="col-5 d-flex justify-content-start">Tournois/Prix</div>
       <div class="col-1">Niveau</div>
-      <div class="col-3">Date</div>
-      <div class="col-3 d-flex justify-content-start">Participants</div>
+      <div class="col-2">Date</div>
+      <div class="col-4 d-flex justify-content-start">Participants</div>
      </div>

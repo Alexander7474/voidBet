@@ -2,24 +2,26 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-
 $title = 'Équipes'; 
-$racine_path = '../';
-
-/*template*/  include($racine_path.'templates/front/header.php');
+if(!isset($in_index)){
+  $racine_path = '../';
+  /*template*/  include($racine_path.'templates/front/header.php');
+}
 
 /*template*/  include($racine_path.'templates/front/team_template.php');
 
-require($racine_path."model/Equipe.php");
+require_once($racine_path."model/Equipe.php");
 use bd\Equipe;
 
-require($racine_path."model/Joueur.php");
+require_once($racine_path."model/Joueur.php");
 use bd\Joueur;
 
 $equipeBD = new Equipe();
 $joueurDB = new Joueur();
 
 foreach ($equipeBD->listeEquipes() as $equipe) {
+  $formated_name = str_replace(" ", "-", strtolower($equipe->nom_equipe));
+  $team_logo = "https://raw.githubusercontent.com/lootmarket/esport-team-logos/refs/heads/master/csgo/".$formated_name."/".$formated_name."-logo.png";
   $team_name =$equipe->nom_equipe;
   $team_cashprize="9999$";
 
@@ -41,7 +43,7 @@ foreach ($equipeBD->listeEquipes() as $equipe) {
 echo '</div>';
 echo '</div>';
 
+if(!isset($in_index)){
+  /*template*/  include($racine_path.'templates/front/footer.php');
+}
 ?>
-		
-
-<?php /*template*/  include($racine_path.'templates/front/footer.php');?>

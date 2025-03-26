@@ -6,10 +6,10 @@ namespace bd;
 use \PDO;
 
 // Pour que PDO est la class Animal
-require('../class/Tournoi.php');
+require_once($racine_path.'class/Tournoi.php');
 
 // pour pouvoir créer la connexion à la BD
-require('GestionBD.php');
+require_once('GestionBD.php');
 use bd\GestionBD;
 
 // classe Animal comme définit sur le diagramme de classe
@@ -22,8 +22,7 @@ class Tournoi
 		$BD->connexion();
 		
 	    //Prépartion de la requête
-		//$sql = 'SELECT * from site."Animal";';
-		$sql = 'SELECT * from tournois;';
+		$sql = 'SELECT * from tournois ORDER BY date_debut;';
 		$stat = $BD->pdo->prepare($sql);
 		$stat->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'classe\Tournoi');
 		$stat->execute();
@@ -104,6 +103,25 @@ class Tournoi
 		$stat->bindParam('cash_prize', $tournoi->cash_prize);
 		$stat->execute();
 		$BD->deconnexion();
-	}
+  }
+
+  public function getIdEquipesTournoi($id){
+		// Connexion àla bd
+		$BD = new GestionBD();
+		$BD->connexion();
+		
+		$sql = 'SELECT * from composition_tournoi where id_tournoi=:id_tournoi;';
+		$stat = $BD->pdo->prepare($sql);
+		$stat->bindParam('id_tournoi', $id);
+    $stat->execute();
+
+    $ids = array_column($stat->fetchAll(PDO::FETCH_ASSOC), 'id_equipe');
+
+		$BD->deconnexion();
+
+    return $ids;
+  }
+
 }
+
 ?>

@@ -6,7 +6,7 @@
 	use \PDO;
 
 	// Pour que PDO est la class Animal
-	require('../class/User.php');
+	require($racine_path.'class/User.php');
 	
 	// pour pouvoir créer la connexion à la BD
 	require('GestionBD.php');

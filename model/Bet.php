@@ -6,7 +6,7 @@ namespace bd;
 use \PDO;
 
 // Pour que PDO est la class Animal
-require('../class/Bet.php');
+require($racine_path.'class/Bet.php');
 
 // pour pouvoir créer la connexion à la BD
 require('GestionBD.php');

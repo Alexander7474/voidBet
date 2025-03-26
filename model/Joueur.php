@@ -6,7 +6,7 @@
 	use \PDO;
 
 	// Pour que PDO est la class Joueur
-	require('../class/Joueur.php');
+	require($racine_path.'class/Joueur.php');
 	
 	// pour pouvoir créer la connexion à la BD
 	require_once('GestionBD.php');
