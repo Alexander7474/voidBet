@@ -30,19 +30,20 @@ class Matchs
         $this->cote2 = $cote2;
     }
 
-    public function showInfo()
+    public function __toString()
     {
-        echo "\n id_match : ".$this->id_match;
-        echo "\n date_match : ".$this->date_match;
-        echo "\n heure_match : ".$this->heure_match;
-        echo "\n bo : ".$this->format;
-        echo "\n id_equipe1 : ".$this->id_equipe1;
-        echo "\n id_equipe2 : ".$this->id_equipe2;
-        echo "\n id_tournoi : ".$this->id_tournoi;
-        echo "\n score1 :".$this->score1;
-        echo "\n cote1 :".$this->cote1;
-        echo "\n score2 : ".$this->score2;
-        echo "\n cote2 :".$this->cote2;
+        $str = $str .  "\n id_match : ".$this->id_match;
+        $str = $str .  "\n date_match : ".$this->date_match;
+        $str = $str .  "\n heure_match : ".$this->heure_match;
+        $str = $str .  "\n bo : ".$this->format;
+        $str = $str .  "\n id_equipe1 : ".$this->id_equipe1;
+        $str = $str .  "\n id_equipe2 : ".$this->id_equipe2;
+        $str = $str .  "\n id_tournoi : ".$this->id_tournoi;
+        $str = $str .  "\n score1 :".$this->score1;
+        $str = $str .  "\n cote1 :".$this->cote1;
+        $str = $str .  "\n score2 : ".$this->score2;
+        $str = $str .  "\n cote2 :".$this->cote2;
+        return $str;
     }
 }
 ?>

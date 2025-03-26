@@ -20,14 +20,15 @@ class Bet
         $this->id_user = $id_user;
     }
 
-    public function showInfo()
+    public function __toString()
     {
-        echo "\n id_paris : ".$this->id_paris;
-        echo "\n id_match : ".$this->id_match;
-        echo "\n date_paris : ".$this->date_paris;
-        echo "\n cote : ".$this->cote;
-        echo "\n valeur : ".$this->valeur;
-        echo "\n id_user : ".$this->id_user;
+        $str = "\n id_paris : ".$this->id_paris;
+        $str = $str .  "\n id_match : ".$this->id_match;
+        $str = $str .  "\n date_paris : ".$this->date_paris;
+        $str = $str .  "\n cote : ".$this->cote;
+        $str = $str .  "\n valeur : ".$this->valeur;
+        $str = $str .  "\n id_user : ".$this->id_user;
+        return $str;
     }
 }
 

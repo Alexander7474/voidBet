@@ -18,13 +18,14 @@ namespace classe;
       $this->age = $age;
     }
 
-    public function showInfo(){
-      echo "\npseudo: ".$this->pseudo;
-      echo "\npassword: ".$this->password;
-      echo "\nemail: ".$this->email;
-      echo "\nage: ".$this->age;
-      echo "\nvoid_coin: ".$this->void_coin;
-      echo "\nid_user: ".$this->id_user;
+    public function __toString(){
+      $str = $str .  "\npseudo: ".$this->pseudo;
+      $str = $str .  "\npassword: ".$this->password;
+      $str = $str .  "\nemail: ".$this->email;
+      $str = $str .  "\nage: ".$this->age;
+      $str = $str .  "\nvoid_coin: ".$this->void_coin;
+      $str = $str .  "\nid_user: ".$this->id_user;
+      return $str;
     }
 		
   }

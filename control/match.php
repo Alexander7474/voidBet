@@ -103,7 +103,7 @@ if(isset($_GET['match_id'])){
       $betScore->score2 = $_GET['score2'];
 
       $betScoreDB->saveBetOnScore($betScore);
-      echo "bet saved";
+      echo $bet;
     }else{ //paris sur le résultat --------------------------------------------------
       $betResultDB = new BetOnResult();
 
