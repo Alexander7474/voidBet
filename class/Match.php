@@ -15,7 +15,7 @@ class Matchs
     public $score2;
     public $cote2;
             
-    public function __construct($id_match=-1, $date_match='aaaa-mm-jj', $heure_match='hh:mm:ss', $format=-1, $id_equipe1=-1, $id_equipe2=-1, $id_tournoi=-1, $score1=-1, $cote1=-1, $score2=-1, $cote2=-1,)
+    public function __construct($id_match=-1, $date_match='aaaa-mm-jj', $heure_match='hh:mm:ss', $format=-1, $id_equipe1=-1, $id_equipe2=-1, $id_tournoi=-1, $score1=-1, $cote1=-1, $score2=-1, $cote2=-1)
     {
         $this->id_match = $id_match;
         $this->date_match = $date_match;
