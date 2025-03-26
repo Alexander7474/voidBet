@@ -1,7 +1,11 @@
 <?php
-    $racine_path = './';
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
 
-    include $racine_path . "control/menu_nav.php";
+    $title = "Accueil Admin";
+    $racine_path = "./";
 
-    echo '</body>';
+    /*template*/  include($racine_path.'templates/back/menu_nav.php');
+
+    echo '</body></html>';
 ?>

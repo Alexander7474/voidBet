@@ -5,6 +5,7 @@
 	// Pour pouvoir utiliser le namespace de PDO qui se trouve à la racine
 	use \PDO;
 
+	$racine_path = '../';
 	// Pour que PDO est la class Animal
 	require($racine_path.'class/User.php');
 	
@@ -71,6 +72,19 @@
 			
 			return $id["id_user"];
     }
+
+		public function deleteUser($id){
+			// Connexion àla bd
+			$BD = new GestionBD();
+			$BD->connexion();
+			
+			$sql = 'DELETE from users where id_user=:id_user;';
+			$stat = $BD->pdo->prepare($sql);
+			$stat->bindParam('id_user', $id);
+			$stat->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'classe\User');
+			$stat->execute();
+			$BD->deconnexion();
+    	}
 		
 		public function updateUser($user){
 			// Connexion àla bd

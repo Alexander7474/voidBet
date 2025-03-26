@@ -23,11 +23,7 @@
     text-transform: uppercase; /* Met le texte en majuscule */
     padding: 10px;
     font-weight: bold;
-    text-decoration: none; /* enlève le soulignementdu texte */
-}
-
-#sidebar .nav-item {
-    margin-bottom: 20px;
+    color: #47474e;
 }
 
 
@@ -43,6 +39,7 @@
 
 .first-plan-h:hover {
   background-color: #766d7a;
+  color: white;
 }
 
 .second-plan {
@@ -51,9 +48,4 @@
 
 .third-plan {
   background-color: #12101b;
-}
-
-a {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
 }
