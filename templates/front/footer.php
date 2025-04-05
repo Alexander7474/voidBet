@@ -14,14 +14,14 @@
       </div>
 
       <div class="col-6">
-      <form action="<?php echo $html_racine_path;?>contact">
+      <form action="<?php echo $html_racine_path;?>contact" method="POST">
           <h5>Contact us</h5>
           <div class="w-100 gap-2 col">
             <div class="row m-1">
-              <input id="email" type="text" class="form-control" placeholder="Email address">
+              <input name="email" type="text" class="form-control" placeholder="Email address">
             </div>            
             <div class="row m-1">
-              <textarea id="message" class="form-control" placeholder="Message"></textarea>
+              <textarea name="message" class="form-control" placeholder="Message"></textarea>
             </div>            
             <input type="hidden" value="<?php echo $_SESSION['csrf'];?>" name="csrf">
             <div class="row m-1 text-en">

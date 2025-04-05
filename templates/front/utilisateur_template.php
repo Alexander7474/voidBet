@@ -1,6 +1,6 @@
 <div class="container mt-3 text-white">
   <h2 class="border-bottom w-100 mt-5 mb-5">Profil</h2>
-  <form action="<?php echo $racine_path; ?>control/utilisateur.php" method="POST">
+  <form action="<?php echo $html_racine_path; ?>utilisateur" method="POST">
     <div class="form-floating mb-3 mt-3 align-items-center second-plan text-black">
       <input type="text" class="form-control" id="text" placeholder="Enter Pseudo" name="pseudo" value="<?php echo $session_user->pseudo; ?>">
       <label>Pseudo</label>
