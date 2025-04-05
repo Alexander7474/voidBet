@@ -13,7 +13,7 @@ require('GestionBD.php');
 use bd\GestionBD;
 
 // classe Animal comme définit sur le diagramme de classe
-class Game
+class Matchs
 {
 	public function listeMatchs()
     {

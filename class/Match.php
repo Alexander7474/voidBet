@@ -1,7 +1,7 @@
 <?php
 namespace classe;
 
-class Game
+class Matchs
 {
     public $id_match;
     public $date_match;
