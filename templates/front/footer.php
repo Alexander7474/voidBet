@@ -5,10 +5,10 @@
       <div class="col-6">
         <h5>Naviguer</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Matchs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Tournois</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Équipes</a></li>
+        <li class="nav-item mb-2"><a href="<?php echo $racine_path.'index.php';?>" class="nav-link p-0 text-body-secondary">Home</a></li>
+          <li class="nav-item mb-2"><a href="<?php echo $racine_path.'control/match.php';?>" class="nav-link p-0 text-body-secondary">Matchs</a></li>
+          <li class="nav-item mb-2"><a href="<?php echo $racine_path.'control/tournament.php';?>" class="nav-link p-0 text-body-secondary">Tournois</a></li>
+          <li class="nav-item mb-2"><a href="<?php echo $racine_path.'control/team.php';?>" class="nav-link p-0 text-body-secondary">Équipes</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
         </ul>
       </div>

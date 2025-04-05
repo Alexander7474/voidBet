@@ -12,7 +12,7 @@ require_once($racine_path.'class/Tournoi.php');
 require_once('GestionBD.php');
 use bd\GestionBD;
 
-// classe Animal comme définit sur le diagramme de classe
+// classe Joueur comme définit sur le diagramme de classe
 class Tournoi
 {
 	public function listeTournois()

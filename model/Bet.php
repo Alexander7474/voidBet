@@ -12,9 +12,14 @@ require_once($racine_path.'class/Bet.php');
 require_once('GestionBD.php');
 use bd\GestionBD;
 
-// classe Animal comme définit sur le diagramme de classe
+// classe Bet comme définit sur le diagramme de classe
 class Bet
 {
+  /**
+   * @brief Récupère la liste des paris dans la base de données
+   * 
+   * @return array $bets liste des paris 
+   */
 	public function listeBets()
     {
 		// Connexion àla bd
@@ -22,7 +27,6 @@ class Bet
 		$BD->connexion();
 		
 	    //Prépartion de la requête
-		//$sql = 'SELECT * from site."Animal";';
 		$sql = 'SELECT * from bets;';
 		$stat = $BD->pdo->prepare($sql);
 		$stat->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'classe\Bet');
@@ -32,7 +36,14 @@ class Bet
 		
 		return $bets;
 	}
-		
+	
+  /**
+   * @brief Récupère un paris à partir de son id unique dans la base de données 
+   * 
+   * @param int $id id du paris 
+   *
+   * @return array $bets liste des paris 
+   */
 	public function getBet($id)
     {
 		// Connexion àla bd
@@ -55,7 +66,15 @@ class Bet
 		return $bet;
     }
 
-    public function getBetId($id_match, $date)
+  /**
+    * @brief Récupère la liste d'id des paris 
+    *
+    * @param int $id_match 
+    * @param date $date du match
+    * 
+    * @return array $bets liste des paris 
+    */
+  public function getBetId($id_match, $date)
 	{
 		// Connexion àla bd
 		$BD = new GestionBD();
@@ -76,7 +95,12 @@ class Bet
 		
 		return $id["id_paris"];
     }
-		
+	
+  /**
+    * @brief Mes a jour un paris dans la base
+    *
+    * @param Bet $bet 
+    */
 	public function updateBet($bet)
 	{
 	    // Connexion àla bd
@@ -94,7 +118,7 @@ class Bet
 		$stat->execute();
 		$BD->deconnexion();
 	}
-		
+
 	public function saveBet($bet){
 		// Connexion àla bd
 		$BD = new GestionBD();

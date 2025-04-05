@@ -12,7 +12,7 @@ require_once($racine_path.'class/Equipe.php');
 require_once('GestionBD.php');
 use bd\GestionBD;
 
-// classe Animal comme définit sur le diagramme de classe
+// classe Equipe comme définit sur le diagramme de classe
 class Equipe
 {
 	public function listeEquipes()
@@ -22,7 +22,6 @@ class Equipe
 		$BD->connexion();
 		
 	    //Prépartion de la requête
-		//$sql = 'SELECT * from site."Animal";';
 		$sql = 'SELECT * from equipes;';
 		$stat = $BD->pdo->prepare($sql);
 		$stat->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'classe\Equipe');

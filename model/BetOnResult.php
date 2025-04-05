@@ -10,7 +10,7 @@ require_once($racine_path.'class/BetOnResult.php');
 
 use bd\GestionBD;
 
-// classe Animal comme définit sur le diagramme de classe
+// classe BetOnREsult comme définit sur le diagramme de classe
 class BetOnResult
 {
 	public function listeBetOnResult()
@@ -20,7 +20,6 @@ class BetOnResult
 		$BD->connexion();
 		
 	    //Prépartion de la requête
-		//$sql = 'SELECT * from site."Animal";';
 		$sql = 'SELECT * from bet_on_result;';
 		$stat = $BD->pdo->prepare($sql);
 		$stat->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'classe\BetOnResult');

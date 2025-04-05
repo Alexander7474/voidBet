@@ -9,7 +9,7 @@ use \PDO;
 require_once($racine_path.'class/BetOnScore.php');
 use bd\GestionBD;
 
-// classe Animal comme définit sur le diagramme de classe
+// classe BetOnScore comme définit sur le diagramme de classe
 class BetOnScore
 {
 	public function listeBetOnScore()
@@ -19,7 +19,6 @@ class BetOnScore
 		$BD->connexion();
 		
 	    //Prépartion de la requête
-		//$sql = 'SELECT * from site."Animal";';
 		$sql = 'SELECT * from bet_on_score;';
 		$stat = $BD->pdo->prepare($sql);
 		$stat->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'classe\BetOnScore');

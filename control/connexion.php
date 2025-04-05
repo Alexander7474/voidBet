@@ -23,12 +23,6 @@
         $user->pseudo = $_POST['pseudo'];
       }
 
-      if(!str_contains($_POST['email'], '@')){ // si l'email n'est pas valide
-        $can_create = FALSE;
-        $error_message = "Email invalide";
-      }else{
-        $user->email = $_POST['email'];
-      }
 
       if($_POST['age'] < 18){ // si n'est pas majeur
         $can_create = FALSE;
