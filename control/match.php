@@ -5,7 +5,6 @@ ini_set('display_errors', '1');
 $title = 'Matchs'; 
 if(!isset($in_index)){
   $racine_path = '../';
-  /*template*/  include($racine_path.'templates/front/header.php');
 }
 
 require_once($racine_path."model/Match.php");
@@ -32,9 +31,29 @@ use bd\Bet;
 
 require_once($racine_path."class/Bet.php");
 
+require_once($racine_path.'model/User.php');
+use bd\User;
+
 $equipeDB = new Equipe();
 $matchsDB = new Matchs();
 $tournoiDB = new Tournoi();
+
+// si pas dans index alors procedure pour afficher le tab avec l'utilisateur
+if(!isset($in_index)){
+  if(isset($_COOKIE['logged'])){
+    $tab_unser = unserialize($_COOKIE['logged']);
+    $userDB = new User();
+
+    $user = $userDB->getUser($tab_unser[0]['id']);
+
+    if($user != null){
+      if($user->password == $tab_unser[0]['password']){
+        $cookie_user = $user;
+      }
+    }
+  }
+  /*template*/  include($racine_path.'templates/front/header.php');
+}
 
 /*template*/  include($racine_path.'templates/front/match_template.php');
 

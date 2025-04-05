@@ -5,12 +5,11 @@
 	// Pour pouvoir utiliser le namespace de PDO qui se trouve à la racine
 	use \PDO;
 
-	$racine_path = '../';
 	// Pour que PDO est la class Animal
-	require($racine_path.'class/User.php');
+	require_once($racine_path.'class/User.php');
 	
 	// pour pouvoir créer la connexion à la BD
-	require('GestionBD.php');
+	require_once('GestionBD.php');
 	use bd\GestionBD;
 
 	// classe Animal comme définit sur le diagramme de classe

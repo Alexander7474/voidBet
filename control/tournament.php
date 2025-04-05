@@ -5,10 +5,7 @@ ini_set('display_errors', '1');
 $title = 'Tournois'; 
 if(!isset($in_index)){
   $racine_path = '../';
-  /*template*/  include($racine_path.'templates/front/header.php');
 }
-
-/*template*/  include($racine_path.'templates/front/tournament_template.php');
 
 require_once($racine_path."model/Equipe.php");
 use bd\Equipe;
@@ -16,8 +13,30 @@ use bd\Equipe;
 require_once($racine_path."model/Tournoi.php");
 use bd\Tournoi;
 
+require_once($racine_path.'model/User.php');
+use bd\User;
+
 $equipeDB = new Equipe();
 $tournoiDB = new Tournoi();
+
+// si pas dans index alors procedure pour afficher le tab avec l'utilisateur
+if(!isset($in_index)){
+  if(isset($_COOKIE['logged'])){
+    $tab_unser = unserialize($_COOKIE['logged']);
+    $userDB = new User();
+
+    $user = $userDB->getUser($tab_unser[0]['id']);
+
+    if($user != null){
+      if($user->password == $tab_unser[0]['password']){
+        $cookie_user = $user;
+      }
+    }
+  }
+  /*template*/  include($racine_path.'templates/front/header.php');
+}
+
+/*template*/  include($racine_path.'templates/front/tournament_template.php');
 
 $month = "";
 //rangement des tournois par date 

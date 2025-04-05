@@ -58,7 +58,10 @@
       if($id >= 0){
         $user = $userDB->getUser($id);
         if(password_verify($_POST['mdp'], $user->password)){
-          $success_message = 'Connexion réusit';
+          $tab[] = ['id'=>$user->id_user, 'password'=>$user->password];
+          $tabser = serialize($tab);
+          setcookie('logged', $tabser, time()+60*60*24, "/");
+          header('Location: utilisateur.php');
         }else{
           $error_message = "Impossible  de se connecter";
         }

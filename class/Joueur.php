@@ -1,7 +1,7 @@
 <?php
 namespace classe;
 
-  require("Personne.php");
+  require_once("Personne.php");
 
 	class Joueur extends Personne{
     public $nationalite;

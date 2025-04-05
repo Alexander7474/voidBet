@@ -5,10 +5,7 @@ ini_set('display_errors', '1');
 $title = 'Équipes'; 
 if(!isset($in_index)){
   $racine_path = '../';
-  /*template*/  include($racine_path.'templates/front/header.php');
 }
-
-/*template*/  include($racine_path.'templates/front/team_template.php');
 
 require_once($racine_path."model/Equipe.php");
 use bd\Equipe;
@@ -16,8 +13,30 @@ use bd\Equipe;
 require_once($racine_path."model/Joueur.php");
 use bd\Joueur;
 
+require_once($racine_path.'model/User.php');
+use bd\User;
+
 $equipeBD = new Equipe();
 $joueurDB = new Joueur();
+
+// si pas dans index alors procedure pour afficher le tab avec l'utilisateur
+if(!isset($in_index)){
+  if(isset($_COOKIE['logged'])){
+    $tab_unser = unserialize($_COOKIE['logged']);
+    $userDB = new User();
+
+    $user = $userDB->getUser($tab_unser[0]['id']);
+
+    if($user != null){
+      if($user->password == $tab_unser[0]['password']){
+        $cookie_user = $user;
+      }
+    }
+  }
+  /*template*/  include($racine_path.'templates/front/header.php');
+}
+
+/*template*/  include($racine_path.'templates/front/team_template.php');
 
 foreach ($equipeBD->listeEquipes() as $equipe) {
   $formated_name = str_replace(" ", "-", strtolower($equipe->nom_equipe));
