@@ -132,10 +132,15 @@ if(isset($_GET['match_id'])){
                 }
 
                 $id_paris = $betDB->saveBet($bet); // save du paris
-
                 $betScore->id_paris = $id_paris;
 
                 $betScoreDB->saveBetOnScore($betScore);
+
+                // on retire la valeur du paris au fond du joueur
+                $session_user->void_coin = $session_user->void_coin - $bet->valeur;             
+                $userDB = new User();
+                $userDB->updateUser($session_user);
+
                 $success_message = "Paris sur le score sauvegardé";
               }
             }else{ //paris sur le résultat --------------------------------------------------
@@ -170,14 +175,17 @@ if(isset($_GET['match_id'])){
               }
 
               $betResultDB->saveBetOnResult($betResult);
+
+              // on retire la valeur du paris au fond du joueur
+              $session_user->void_coin = $session_user->void_coin - $bet->valeur;             
+              $userDB = new User();
+              $userDB->updateUser($session_user);
+
               $success_message = "Paris sur le résultat sauvegardé";
               // -----------------------------------------------------------------------------
             }
 
-            // on retire la valeur du paris au fond du joueur
-            $session_user->void_coin = $session_user->void_coin - $bet->valeur;             
-            $userDB = new User();
-            $userDB->updateUser($session_user);
+
              
           }else{
             $error_message = "Tu ne possède pas les fonds pour faire le paris";
