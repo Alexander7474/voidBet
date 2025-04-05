@@ -9,6 +9,7 @@ if(!isset($_SESSION['csrf'])){
 
     $title = 'Utilisateur'; 
     $racine_path = '../';
+  $html_racine_path = './';
 
     error_reporting(E_ALL);
     ini_set('display_errors', '1');

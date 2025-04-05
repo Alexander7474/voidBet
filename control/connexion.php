@@ -7,6 +7,7 @@ if(!isset($_SESSION['csrf'])){
 
     $title = "connexion";
     $racine_path = '../';
+  $html_racine_path = './';
     error_reporting(E_ALL);
     ini_set('display_errors', '1');
     
@@ -58,7 +59,7 @@ if(!isset($_SESSION['csrf'])){
         if($can_create){ // creation du compte
           $user->void_coin = 100;
           $userDB->saveUser($user);
-          header('Location: connexion.php');
+          header('Location: connexion');
         }
       }else{
         $error_message = "Token csrf invalide";

@@ -6,6 +6,7 @@ $title = 'Équipes';
 if(!isset($in_index)){
   session_start();
   $racine_path = '../';
+  $html_racine_path = './';
 }
 
 require_once($racine_path."model/Equipe.php");

@@ -2,7 +2,7 @@
     <h3 class="text-center">Page de connexion</h3>
     <p class="text-center">Complétez tous les champs</p>
         
-    <form action="<?php echo $racine_path;?>control/connexion.php" method="post" class="mb-3 was-validated">
+    <form action="<?php echo $html_racine_path;?>connexion" method="post" class="mb-3 was-validated">
         <div class="mb-3 mt-3">
             <label for="pseudo" class="form-label">Pseudo :</label>
             <input type="text" class="form-control" id="pseudo" placeholder="Enter pseudo" name="pseudo" required>
@@ -13,7 +13,7 @@
         </div>
     <div class="row">
       <div class="col">
-        <a class="btn btn-primary" href="<?php echo $racine_path;?>creation">Créer un compte</a>
+        <a class="btn btn-primary" href="<?php echo $html_racine_path;?>creation">Créer un compte</a>
       </div>    
       <div class="col text-end">
         <button type="submit" class="btn btn-primary">Se connecter</button>

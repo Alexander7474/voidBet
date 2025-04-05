@@ -10,4 +10,4 @@
   </div>
 </div>
 
-<script src="<?php echo $racine_path; ?>templates/front/scripts/cookie_form.js"></script>
+<script src="<?php echo $html_racine_path; ?>templates/front/scripts/cookie_form.js"></script>

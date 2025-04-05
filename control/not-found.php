@@ -6,6 +6,7 @@ ini_set('display_errors', '1');
 
 $title = '404'; 
 $racine_path = '../';
+  $html_racine_path = './';
 
 require_once($racine_path.'model/User.php');
 use bd\User;

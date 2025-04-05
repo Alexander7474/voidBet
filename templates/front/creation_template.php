@@ -2,7 +2,7 @@
     <h3 class="text-center">Page de création de compte</h3>
     <p class="text-center">Complétez tous les champs</p>
         
-    <form action="<?php echo $racine_path;?>control/connexion.php?create=ok" method="POST" class="was-validated">
+    <form action="<?php echo $html_racine_path;?>connexion" method="POST" class="was-validated">
         <div class="mb-3 mt-3">
             <label for="pseudo" class="form-label">Pseudo :</label>
             <input type="text" class="form-control" id="pseudo" placeholder="Enter pseudo" name="pseudo" required>
