@@ -18,6 +18,9 @@
       <input type="password" class="form-control" id="mdp_valid" placeholder="Enter password" name="mdp_valid">
       <label>Confirmer le nouveau mot de passe</label>
     </div>
+    
+    <input type="hidden" value="<?php echo $_SESSION['csrf'];?>" name="csrf">
+    
     <button type="submit" class="btn btn-primary mb-2 mt-2">Soumettre</button>
     <?php 
     include $racine_path."templates/front/error_msg.php";

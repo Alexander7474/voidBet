@@ -40,6 +40,8 @@
             <label for="valeur">Valeur parié:</label>
             <input type="number" class="form-control m-2" id="valeur" step="0.01" name="bet_value" placeholder="Entrez une valeur" required>
         </div>
+    
+        <input type="hidden" value="<?php echo $_SESSION['csrf'];?>" name="csrf">
 
         <div class="d-flex justify-content-between mt-3">
             <button type="reset" class="btn btn-secondary">Annuler</button>

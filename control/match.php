@@ -8,6 +8,11 @@ if(!isset($in_index)){
   $racine_path = '../';
 }
 
+//gestion csrf
+if(!isset($_SESSION['csrf'])){
+  $_SESSION['csrf'] = bin2hex(random_bytes(32));
+}
+
 require_once($racine_path."model/Match.php");
 use bd\Matchs;
 
@@ -91,79 +96,83 @@ if(isset($_GET['match_id'])){
   echo '</div>';
    
   if(isset($_GET['bet_value']) && isset($_GET['result']) && isset($_GET['selected_team']) && isset($_GET['score1']) && isset($_GET['score2'])){ // on enregistre le paris 
-    $bet_value = $_GET['bet_value'];
-    if($bet_value > 0){
-      $betDB = new Bet();
+    if($_GET['csrf'] == $_SESSION['csrf']){
+      $bet_value = $_GET['bet_value'];
+      if($bet_value > 0){
+        $betDB = new Bet();
 
-      $bet = new classe\Bet();
-      $bet->id_match = $_GET['match_id'];
-      $bet->date_paris = date('Y-m-d');
-      $bet->valeur = $_GET['bet_value'];
+        $bet = new classe\Bet();
+        $bet->id_match = $_GET['match_id'];
+        $bet->date_paris = date('Y-m-d');
+        $bet->valeur = $_GET['bet_value'];
 
-      //rajouter des test sur les fonds avec la session
+        //rajouter des test sur les fonds avec la session
 
-      $bet->id_user = 1; // a gérer avec la session a l'avenir
+        $bet->id_user = 1; // a gérer avec la session a l'avenir
 
-      if(isset($_GET['on_score'])){ //paris sur le score-------------------------------
-        $betScoreDB = new BetOnScore();
-        $betScore = new classe\BetOnScore();
-        
-        $betScore->score1 = $_GET['score1'];
-        $betScore->score2 = $_GET['score2'];
+        if(isset($_GET['on_score'])){ //paris sur le score-------------------------------
+          $betScoreDB = new BetOnScore();
+          $betScore = new classe\BetOnScore();
+          
+          $betScore->score1 = $_GET['score1'];
+          $betScore->score2 = $_GET['score2'];
 
-        //score entré valide ?
-        if(!$betScore->isValid($m)) {
-          $error_message = "Score invalide";
-        }else{ 
-          if($betScore->score1 > $betScore->score2){
-            $bet->cote = $team1_cote;
+          //score entré valide ?
+          if(!$betScore->isValid($m)) {
+            $error_message = "Score invalide";
+          }else{ 
+            if($betScore->score1 > $betScore->score2){
+              $bet->cote = $team1_cote;
+            }else{
+              $bet->cote = $team2_cote;
+            }
+
+            $id_paris = $betDB->saveBet($bet); // save du paris
+
+            $betScore->id_paris = $id_paris;
+
+            $betScoreDB->saveBetOnScore($betScore);
+            $success_message = "Paris sur le score sauvegardé";
+          }
+        }else{ //paris sur le résultat --------------------------------------------------
+
+          $betResultDB = new BetOnResult();
+
+          //détermine la cote à utiliser
+          if($_GET['selected_team'] == $t1->nom_equipe){
+            if($_GET['result'] == "victoire"){
+              $bet->cote = $team1_cote; // paris victoire team 1
+            }else{
+              $bet->cote = $team2_cote; // paris defaite team 1
+            }
           }else{
-            $bet->cote = $team2_cote;
+            if($_GET['result'] == "victoire"){
+              $bet->cote = $team2_cote; // paris victoire team1
+            }else{
+              $bet->cote = $team1_cote; // paris defaite team 2
+            }
           }
 
           $id_paris = $betDB->saveBet($bet); // save du paris
 
-          $betScore->id_paris = $id_paris;
+          $betResult = new classe\BetOnResult();
 
-          $betScoreDB->saveBetOnScore($betScore);
-          $success_message = "Paris sur le score sauvegardé";
-        }
-      }else{ //paris sur le résultat --------------------------------------------------
-
-        $betResultDB = new BetOnResult();
-
-        //détermine la cote à utiliser
-        if($_GET['selected_team'] == $t1->nom_equipe){
-          if($_GET['result'] == "victoire"){
-            $bet->cote = $team1_cote; // paris victoire team 1
+          $betResult->id_paris = $id_paris;
+          $betResult->result = $_GET['result'];
+          if($_GET['selected_team'] == $t1->nom_equipe){ // quelle team est visé par le résultat
+            $betResult->id_equipe = $t1->id_equipe;
           }else{
-            $bet->cote = $team2_cote; // paris defaite team 1
+            $betResult->id_equipe = $t2->id_equipe;
           }
-        }else{
-          if($_GET['result'] == "victoire"){
-            $bet->cote = $team2_cote; // paris victoire team1
-          }else{
-            $bet->cote = $team1_cote; // paris defaite team 2
-          }
-        }
 
-        $id_paris = $betDB->saveBet($bet); // save du paris
-
-        $betResult = new classe\BetOnResult();
-
-        $betResult->id_paris = $id_paris;
-        $betResult->result = $_GET['result'];
-        if($_GET['selected_team'] == $t1->nom_equipe){ // quelle team est visé par le résultat
-          $betResult->id_equipe = $t1->id_equipe;
-        }else{
-          $betResult->id_equipe = $t2->id_equipe;
-        }
-
-        $betResultDB->saveBetOnResult($betResult);
-        $success_message = "Paris sur le résultat sauvegardé";
-      }// -----------------------------------------------------------------------------
+          $betResultDB->saveBetOnResult($betResult);
+          $success_message = "Paris sur le résultat sauvegardé";
+        }// -----------------------------------------------------------------------------
+      }else{
+        $error_message = "Valeur du paris dois être supérieur à 0";
+      }
     }else{
-      $error_message = "Valeur du paris dois être supérieur à 0";
+      $error_message = "Token csrf invalide";
     }
   }
 

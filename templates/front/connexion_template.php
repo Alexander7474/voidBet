@@ -20,6 +20,7 @@
       </div>    
     </div>
     
+    <input type="hidden" value="<?php echo $_SESSION['csrf'];?>" name="csrf">
     <?php 
     include $racine_path."templates/front/error_msg.php";
     ?>
