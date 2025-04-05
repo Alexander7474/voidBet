@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
@@ -9,15 +11,15 @@ $racine_path = "./";
 require_once($racine_path.'model/User.php');
 use bd\User;
 //procedure pour déterminer si l'utilisateur est connécté
-if(isset($_COOKIE['logged'])){
-  $tab_unser = unserialize($_COOKIE['logged']);
+if(isset($_SESSION['logged'])){
+  $tab_unser = unserialize($_SESSION['logged']);
   $userDB = new User();
 
   $user = $userDB->getUser($tab_unser[0]['id']);
 
   if($user != null){
     if($user->password == $tab_unser[0]['password']){
-      $cookie_user = $user;
+      $session_user = $user;
     }
   }
 }

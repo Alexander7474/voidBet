@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
     $title = "connexion";
     $racine_path = '../';
     error_reporting(E_ALL);
@@ -60,13 +62,30 @@
         if(password_verify($_POST['mdp'], $user->password)){
           $tab[] = ['id'=>$user->id_user, 'password'=>$user->password];
           $tabser = serialize($tab);
-          setcookie('logged', $tabser, time()+60*60*24, "/");
+          setcookie('logged', $tabser, time()+60*60*24, "/"); // si l'utilisateur a accepté les cookie
+          $_SESSION['logged'] = $tabser; 
           header('Location: utilisateur.php');
         }else{
           $error_message = "Impossible  de se connecter";
         }
       }else{
         $error_message = "Impossible  de se connecter";
+      }
+    }else if(isset($_COOKIE['logged'])){// connexion grace au cookie
+      $userDB = new User();
+
+      $tab_unser = unserialize($_COOKIE['logged']);
+      $user = $userDB->getUser($tab_unser[0]['id']);
+
+      if($user != null){
+        if($tab_unser[0]['password'] == $user->password){
+          $_SESSION['logged'] = $_COOKIE['logged']; // si tous est valide la session vaut le cookie de session
+          header('Location: utilisateur.php');
+        }else{
+          $error_message = "Cookie invalide";
+        }
+      }else{
+        $error_message = "Cookie invalide";
       }
     }
 

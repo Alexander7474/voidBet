@@ -10,16 +10,16 @@
           <!-- <a class="nav-item nav-link ps-2 pe-2" href="#">Joueurs</a>A voir pour plus tard -->
       </div>  
       <div class="col d-flex justify-content-end">
-      <?php if(!isset($cookie_user)) {?>
+      <?php if(!isset($session_user)) {?>
         <a href="<?php echo $racine_path; ?>control/connexion.php"><button class="btn btn-primary my-2 my-sm-0" type="submit">Connexion</button></a>
       <?php }else{?>
         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <div class="col">
             <div class="row">
-            <span class="text-end"><?php echo $cookie_user->pseudo; ?></span>
+            <span class="text-end"><?php echo $session_user->pseudo; ?></span>
             </div>
             <div class="row">
-              <span class="badge text-end"><?php echo $cookie_user->void_coin; ?> 💵</span>
+              <span class="badge text-end"><?php echo $session_user->void_coin; ?> 💵</span>
             </div>
           </div>
           <div class="col">

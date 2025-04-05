@@ -4,6 +4,7 @@ ini_set('display_errors', '1');
 
 $title = 'Matchs'; 
 if(!isset($in_index)){
+  session_start();
   $racine_path = '../';
 }
 
@@ -40,15 +41,15 @@ $tournoiDB = new Tournoi();
 
 // si pas dans index alors procedure pour afficher le tab avec l'utilisateur
 if(!isset($in_index)){
-  if(isset($_COOKIE['logged'])){
-    $tab_unser = unserialize($_COOKIE['logged']);
+  if(isset($_SESSION['logged'])){
+    $tab_unser = unserialize($_SESSION['logged']);
     $userDB = new User();
 
     $user = $userDB->getUser($tab_unser[0]['id']);
 
     if($user != null){
       if($user->password == $tab_unser[0]['password']){
-        $cookie_user = $user;
+        $session_user = $user;
       }
     }
   }

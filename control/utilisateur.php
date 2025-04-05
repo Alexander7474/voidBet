@@ -1,5 +1,6 @@
 
 <?php
+session_start();
     
     $title = 'Utilisateur'; 
     $racine_path = '../';
@@ -10,20 +11,20 @@
     require_once($racine_path.'model/User.php');
     use bd\User;
     //procedure pour déterminer si l'utilisateur est connécté
-    if(isset($_COOKIE['logged'])){
-      $tab_unser = unserialize($_COOKIE['logged']);
+    if(isset($_SESSION['logged'])){
+      $tab_unser = unserialize($_SESSION['logged']);
       $userDB = new User();
 
       $user = $userDB->getUser($tab_unser[0]['id']);
 
       if($user != null){
         if($user->password == $tab_unser[0]['password']){
-          $cookie_user = $user;
+          $session_user = $user;
         }
       }
     }
 
-    if(!isset($cookie_user)){ // sinon on redirige vers connexion car il faut être connécté pour accéder a cette page
+    if(!isset($session_user)){ // sinon on redirige vers connexion car il faut être connécté pour accéder a cette page
       header('Location: connexion.php');
     }
 
@@ -38,10 +39,10 @@
       $can_modify = TRUE;
       
       if(!$userDB->getUserId($_POST['pseudo']) >= 0){ // si le pseudo est utilisé
-        $cookie_user->pseudo = $_POST['pseudo'];
+        $session_user->pseudo = $_POST['pseudo'];
       }
 
-      $cookie_user->email = $_POST['email'];
+      $session_user->email = $_POST['email'];
 
       if(strlen($_POST['mdp']) > 0){
         if($_POST['mdp'] != $_POST['mdp_valid']){// les mot de passe ne correspondent pas
@@ -53,7 +54,7 @@
             $can_modify = FALSE;
             $error_message = "Mot de passe inférieur à 8 caractères";
           }else{
-            $cookie_user->password = password_hash($user->password, PASSWORD_BCRYPT);
+            $session_user->password = password_hash($user->password, PASSWORD_BCRYPT);
           }
         }
       }
@@ -61,7 +62,7 @@
       //------------------------------------------------------------------------------
 
       if($can_modify){ // modification du compte
-        $userDB->updateUser($cookie_user);
+        $userDB->updateUser($session_user);
         $success_message = "Changement(s) réussi";
       }
     }
