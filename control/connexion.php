@@ -62,7 +62,9 @@ session_start();
         if(password_verify($_POST['mdp'], $user->password)){
           $tab[] = ['id'=>$user->id_user, 'password'=>$user->password];
           $tabser = serialize($tab);
-          setcookie('logged', $tabser, time()+60*60*24, "/"); // si l'utilisateur a accepté les cookie
+          if(isset($_COOKIE['cookies_accepted']) && $_COOKIE['cookies_accepted'] == "true"){
+            setcookie('logged', $tabser, time()+60*60*24*30, "/"); // si l'utilisateur a accepté les cookie
+          }
           $_SESSION['logged'] = $tabser; 
           header('Location: utilisateur.php');
         }else{
@@ -89,6 +91,7 @@ session_start();
       }
     }
 
+/*template*/  include($racine_path.'templates/front/cookie.php');
     include($racine_path.'templates/front/header.php');
 
     if(!isset($_GET['create'])){

@@ -53,6 +53,7 @@ if(!isset($in_index)){
       }
     }
   }
+/*template*/  include($racine_path.'templates/front/cookie.php');
   /*template*/  include($racine_path.'templates/front/header.php');
 }
 

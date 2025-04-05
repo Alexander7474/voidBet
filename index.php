@@ -23,6 +23,8 @@ if(isset($_SESSION['logged'])){
     }
   }
 }
+
+/*template*/  include($racine_path.'templates/front/cookie.php');
 /*template*/  include($racine_path.'templates/front/header.php');
 
 echo "<div class='container'>";

@@ -68,6 +68,7 @@ session_start();
     }
 
 
+/*template*/  include($racine_path.'templates/front/cookie.php');
     /*template*/  include($racine_path.'templates/front/header.php');
 
     // valeur pour exemple
