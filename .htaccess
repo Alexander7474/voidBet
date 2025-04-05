@@ -1,0 +1,9 @@
+RewriteEngine on
+
+RewriteRule ^match/([0-9]+)$ /control/match.php?match_id=$1 [L,QSA]
+
+RewriteRule ^creation /control/connexion.php?create=ok 
+
+RewriteRule ^([a-zA-Z0-9_-]+)$ /control/$1.php [L,QSA]
+
+ErrorDocument 404 /control/not-found.php

@@ -77,7 +77,7 @@ if(!isset($_SESSION['csrf'])){
               setcookie('logged', $tabser, time()+60*60*24*30, "/"); // si l'utilisateur a accepté les cookie
             }
             $_SESSION['logged'] = $tabser; 
-            header('Location: utilisateur.php');
+            header('Location: utilisateur');
           }else{
             $error_message = "Impossible  de se connecter";
           }
@@ -96,7 +96,7 @@ if(!isset($_SESSION['csrf'])){
       if($user != null){
         if($tab_unser[0]['password'] == $user->password){
           $_SESSION['logged'] = $_COOKIE['logged']; // si tous est valide la session vaut le cookie de session
-          header('Location: utilisateur.php');
+          header('Location: utilisateur');
         }else{
           $error_message = "Cookie invalide";
         }

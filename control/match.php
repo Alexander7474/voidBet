@@ -87,7 +87,7 @@ if(isset($_GET['match_id'])){
   $team1_cote=$m->cote1;
   $team2_cote=$m->cote2;
 
-  $match_bet_link = $racine_path.'control/match.php?match_id='.$m->id_match;
+  $match_bet_link = $racine_path.'match/'.$m->id_match;
   $match_id = $m->id_match;
 
   include($racine_path.'templates/front/daily_match.php');
@@ -243,7 +243,7 @@ if(isset($_GET['match_id'])){
     $team1_cote=$m->cote1;
     $team2_cote=$m->cote2;
 
-    $match_bet_link = $racine_path.'control/match.php?match_id='.$m->id_match;
+    $match_bet_link = $racine_path.'match/'.$m->id_match;
     $match_id = $m->id_match;
 
     include($racine_path.'templates/front/match_line.php');

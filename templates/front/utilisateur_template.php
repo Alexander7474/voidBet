@@ -1,6 +1,5 @@
 <div class="container mt-3 text-white">
-  <h2>Page Utilisateur</h2>
-  <p>Click à l'intérieur des champs pour changer le champs :</p>
+  <h2 class="border-bottom w-100 mt-5 mb-5">Profil</h2>
   <form action="<?php echo $racine_path; ?>control/utilisateur.php" method="POST">
     <div class="form-floating mb-3 mt-3 align-items-center second-plan text-black">
       <input type="text" class="form-control" id="text" placeholder="Enter Pseudo" name="pseudo" value="<?php echo $session_user->pseudo; ?>">
@@ -21,7 +20,7 @@
     
     <input type="hidden" value="<?php echo $_SESSION['csrf'];?>" name="csrf">
     
-    <button type="submit" class="btn btn-primary mb-2 mt-2">Soumettre</button>
+    <button type="submit" class="btn btn-primary mb-2 mt-2">Modifier mon profil</button>
     <?php 
     include $racine_path."templates/front/error_msg.php";
     ?>

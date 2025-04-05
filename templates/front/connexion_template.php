@@ -13,7 +13,7 @@
         </div>
     <div class="row">
       <div class="col">
-        <a class="btn btn-primary" href="<?php echo $racine_path;?>control/connexion.php?create=ok">Créer un compte</a>
+        <a class="btn btn-primary" href="<?php echo $racine_path;?>creation">Créer un compte</a>
       </div>    
       <div class="col text-end">
         <button type="submit" class="btn btn-primary">Se connecter</button>
