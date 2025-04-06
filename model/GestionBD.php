@@ -7,7 +7,10 @@
 	// Attention cette classe est un exemple, elle peut être implémentée de façon différente
 	class GestionBD{
 		public $pdo;
-		
+
+    /**
+     * Ouvre une connexion à la base de données
+     */
 		public function connexion(){
 			// recuperer le fichier conf et faire une connexion
 			try{
@@ -16,7 +19,10 @@
 				echo 'Exception PDO : '.$e->getMessage(); 
 			}
 		}
-		
+
+    /**
+     * Ferme la connexion à la base de données
+     */
 		public function deconnexion(){
 			$pdo = null;
 		}
