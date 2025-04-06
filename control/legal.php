@@ -6,7 +6,7 @@ ini_set('display_errors', '1');
 
 $title = '404'; 
 $racine_path = '../';
-  $html_racine_path = './';
+$html_racine_path = './';
 
 require_once($racine_path.'model/User.php');
 use bd\User;
@@ -26,7 +26,7 @@ if(isset($_SESSION['logged'])){
 
 /*template*/  include($racine_path.'templates/front/cookie.php');
 /*template*/  include($racine_path.'templates/front/header.php');
-/*template*/  include($racine_path.'templates/front/404.php');
+/*template*/  include($racine_path.'templates/front/legal_template.php');
 /*template*/  include($racine_path.'templates/front/footer.php');
 
 ?>

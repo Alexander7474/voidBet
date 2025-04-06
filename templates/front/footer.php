@@ -9,12 +9,12 @@
           <li class="nav-item mb-2"><a href="<?php echo $html_racine_path.'match';?>" class="nav-link p-0 text-body-secondary">Matchs</a></li>
           <li class="nav-item mb-2"><a href="<?php echo $html_racine_path.'tournament';?>" class="nav-link p-0 text-body-secondary">Tournois</a></li>
           <li class="nav-item mb-2"><a href="<?php echo $html_racine_path.'team';?>" class="nav-link p-0 text-body-secondary">Équipes</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+          <li class="nav-item mb-2"><a href="<?php echo $html_racine_path.'legal';?>" class="nav-link p-0 text-body-secondary">Mentions légales</a></li>
         </ul>
       </div>
 
       <div class="col-6">
-      <form action="<?php echo $html_racine_path;?>contact" method="POST">
+      <form action="<?php echo $html_racine_path;?>contact" method="POST" id="contact_form">
           <h5>Contact us</h5>
           <div class="w-100 gap-2 col">
             <div class="row m-1">
