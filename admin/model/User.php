@@ -114,5 +114,33 @@
 			$stat->execute();
 			$BD->deconnexion();
 		}
+		
+		/**
+		 * Récupère un utilisateur à partir de son id
+		 *
+		 * @param int $id Identifiant de l'utilisateur
+		 *
+		 * @return mixed Un objet User ou null si l'utilisateur n'existe pas
+		 */
+		public function getUser($id)
+		{
+			// Connexion à la base de données
+			$BD = new GestionBD();
+			$BD->connexion();
+
+			$sql = 'SELECT * FROM users WHERE id_user = :id_user;';
+			$stat = $BD->pdo->prepare($sql);
+			$stat->bindParam('id_user', $id);
+			$stat->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'classe\User');
+			$stat->execute();
+			$user = $stat->fetch();
+			$BD->deconnexion();
+
+			if (!$user) {
+				return null;
+			}
+
+			return $user;
+		}
 	}
 ?>

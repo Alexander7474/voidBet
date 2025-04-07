@@ -26,6 +26,7 @@
             <form method="POST" action="">
                 <input type="hidden" name="id_paris" value="<?php echo $id; ?>">
                 <input type="submit" name="supprimer" value="Supprimer" class="btn btn-danger btn-sm">
+                <input type="hidden" value="<?php echo $_SESSION['csrf'];?>" name="csrf">
             </form>
         </div>
     </div>

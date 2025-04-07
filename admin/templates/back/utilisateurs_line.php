@@ -20,5 +20,6 @@
             </form>
         </div>
     </div>
+    <input type="hidden" value="<?php echo $_SESSION['csrf'];?>" name="csrf">
 </form>
 <hr>

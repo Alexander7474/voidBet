@@ -6,6 +6,7 @@
     <!-- Bouton "Ajouter un utilisateur" -->
     <form method="POST" action="utilisateurs.php">
         <input type="submit" name="afficher_form_ajout" value="+ Ajouter un utilisateur" class="btn btn-primary mb-3">
+        <input type="hidden" value="<?php echo $_SESSION['csrf'];?>" name="csrf">
     </form>
 
     <?php else: ?>
@@ -21,6 +22,7 @@
                     <button type="submit" name="annuler" class="btn btn-danger">Annuler</button>
                 </div>
             </div>
+            <input type="hidden" value="<?php echo $_SESSION['csrf'];?>" name="csrf">
         </form>
     <?php endif; ?>
 

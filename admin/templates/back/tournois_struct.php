@@ -5,6 +5,7 @@
         <?php if (!isset($_POST['ajout_tournoi'])): ?>
         <form method="post">
             <button type="submit" name="ajout_tournoi" class="btn btn-primary mb-3">+ Ajouter un tournoi</button>
+            <input type="hidden" value="<?php echo $_SESSION['csrf'];?>" name="csrf">
         </form>
         <?php else: ?>
         <form method="post" class="mb-3">
@@ -17,6 +18,7 @@
                     <button type="submit" name="annuler" class="btn btn-danger">Annuler</button>
                 </div>
             </div>
+            <input type="hidden" value="<?php echo $_SESSION['csrf'];?>" name="csrf">
         </form>
         <?php endif; ?>
 
