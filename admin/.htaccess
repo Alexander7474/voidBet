@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Réécrire l'URL pour les utilisateurs
+RewriteRule ^utilisateurs$ /admin/control/utilisateurs.php [L,QSA]
+
+# Réécrire l'URL pour les paris
+RewriteRule ^paris$ /admin/control/paris.php [L,QSA]
+
+# Réécrire l'URL pour les tournois
+RewriteRule ^tournois$ /admin/control/tournois.php [L,QSA]
